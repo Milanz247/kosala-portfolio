@@ -48,10 +48,10 @@ jobs:
             npm run build
             echo "Restarting application..."
             # Start/Restart specific process on port 3005 using PM2
-            pm2 describe ledger-frontend > /dev/null
+            pm2 describe kosala-portfolio > /dev/null
             if [ $? -eq 0 ]; then
-              pm2 restart ledger-frontend
+              pm2 restart kosala-portfolio
             else
-              pm2 start npm --name "ledger-frontend" -- start -- -p 3005
+              pm2 start npm --name "kosala-portfolio" -- start -- -p 3005
             fi
             pm2 save
