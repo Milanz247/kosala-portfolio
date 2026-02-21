@@ -52,27 +52,27 @@ export default function Footer() {
 
   return (
     <footer className="bg-footer-bg border-t border-card-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-16">
+        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between">
           {/* Brand */}
-          <div>
-            <div className="text-fg font-extrabold text-xl tracking-tight mb-2">
+          <div className="text-center md:text-left">
+            <div className="text-fg font-extrabold text-lg sm:text-xl tracking-tight mb-2">
               Kosala<span className="text-[#FF7A00]">.</span>
             </div>
-            <p className="text-sm text-fg-subtle max-w-xs leading-relaxed">
+            <p className="text-xs sm:text-sm text-fg-subtle max-w-xs mx-auto md:mx-0 leading-relaxed">
               Meta Ads Strategist helping service-based businesses scale through
               high-converting ads and structured content marketing.
             </p>
           </div>
 
           {/* Nav Links */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav className="flex flex-wrap justify-center md:justify-start gap-x-4 sm:gap-x-6 gap-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => scrollTo(e, link.href)}
-                className="text-sm text-fg-subtle hover:text-[#FF7A00] transition-colors duration-300"
+                className="text-xs sm:text-sm text-fg-subtle hover:text-[#FF7A00] transition-colors duration-300 py-1"
               >
                 {link.label}
               </a>
@@ -80,7 +80,7 @@ export default function Footer() {
           </nav>
 
           {/* Social Icons */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center md:justify-start gap-2">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
@@ -89,7 +89,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label={link.label}
                 style={{ "--brand": link.brandColor } as React.CSSProperties}
-                className="group w-9 h-9 rounded-xl bg-icon-bg border border-card-border flex items-center justify-center hover:border-[var(--brand)]/50 hover:bg-[var(--brand)]/10 transition-all duration-300"
+                className="group w-10 h-10 sm:w-9 sm:h-9 rounded-xl bg-icon-bg border border-card-border flex items-center justify-center hover:border-[var(--brand)]/50 hover:bg-[var(--brand)]/10 transition-all duration-300 touch-target"
               >
                 <span className="text-fg-subtle transition-colors duration-300 group-hover:text-[var(--brand)]">
                   <link.Icon />
@@ -99,24 +99,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-card-border mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-fg-subtle text-center sm:text-left">
+        <div className="border-t border-card-border mt-6 sm:mt-8 pt-5 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[10px] sm:text-xs text-fg-subtle text-center sm:text-left">
             © {new Date().getFullYear()} Kosala Dananjaya. All rights reserved.
           </p>
-          <p className="text-xs text-fg-subtle text-center">
+          <p className="text-[10px] sm:text-xs text-fg-subtle text-center">
             Meta Ads Strategist · Al Ain, UAE
           </p>
           <button
             onClick={scrollToTop}
-            className="group w-8 h-8 rounded-xl bg-icon-bg hover:bg-[#FF7A00] flex items-center justify-center transition-all duration-300 border border-card-border hover:border-[#FF7A00]"
+            className="group w-9 h-9 sm:w-8 sm:h-8 rounded-xl bg-icon-bg hover:bg-[#FF7A00] flex items-center justify-center transition-all duration-300 border border-card-border hover:border-[#FF7A00] touch-target"
             aria-label="Back to top"
           >
             <ArrowUp size={14} className="text-fg-subtle group-hover:text-white transition-colors" />
           </button>
         </div>
 
-        <div className="mt-4 text-center">
-          <p className="text-[10px] text-fg-subtle">
+        <div className="mt-3 sm:mt-4 text-center">
+          <p className="text-[9px] sm:text-[10px] text-fg-subtle">
             Developed by{" "}
             <span className="hover:text-[#FF7A00] transition-colors cursor-default">
               Kavindu Manahara

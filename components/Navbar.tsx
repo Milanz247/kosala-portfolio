@@ -43,12 +43,12 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-18 flex items-center justify-between gap-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-18 flex items-center justify-between gap-3">
         {/* Logo */}
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, "#home")}
-          className="font-extrabold text-xl tracking-tight text-fg hover:text-[#FF7A00] transition-colors flex-shrink-0"
+          className="font-extrabold text-lg sm:text-xl tracking-tight text-fg hover:text-[#FF7A00] transition-colors flex-shrink-0"
         >
           Kosala<span className="text-[#FF7A00]">.</span>
         </a>
@@ -82,7 +82,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden w-10 h-10 rounded-full flex items-center justify-center border border-card-border bg-icon-bg text-fg-muted hover:text-[#FF7A00] hover:border-[#FF7A00]/40 transition-all"
+            className="lg:hidden w-11 h-11 rounded-full flex items-center justify-center border border-card-border bg-icon-bg text-fg-muted hover:text-[#FF7A00] hover:border-[#FF7A00]/40 transition-all touch-target"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -101,7 +101,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden overflow-hidden border-b border-card-border"
           >
-            <div className="bg-nav-bg backdrop-blur-xl px-4 py-4 flex flex-col gap-1">
+            <div className="bg-nav-bg backdrop-blur-xl px-4 py-3 flex flex-col gap-0.5">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
@@ -110,17 +110,17 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="px-4 py-3 text-sm text-fg-muted hover:text-fg hover:bg-card-bg-hover rounded-2xl font-medium transition-all"
+                  className="px-4 py-3.5 text-sm text-fg-muted hover:text-fg hover:bg-card-bg-hover rounded-xl font-medium transition-all touch-target"
                 >
                   {link.label}
                 </motion.a>
               ))}
-              <div className="pt-3 pb-1">
+              <div className="pt-2 pb-1">
                 <a
                   href="https://wa.me/94XXXXXXXXX?text=Hi Kosala, I'd like to book a free audit."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full h-11 text-sm font-semibold rounded-2xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 transition-all active:scale-95"
+                  className="flex items-center justify-center gap-2 w-full h-12 text-sm font-semibold rounded-xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 transition-all active:scale-95"
                 >
                   <Phone size={15} />
                   Book a Call

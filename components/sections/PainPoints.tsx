@@ -40,34 +40,34 @@ export default function PainPoints() {
     <section
       id="pain-points"
       ref={ref}
-      className="relative py-24 sm:py-32 overflow-hidden"
+      className="relative py-16 sm:py-32 lg:min-h-screen lg:flex lg:items-center overflow-hidden"
     >
       {/* Subtle bg gradient */}
       <div className="absolute inset-0 bg-linear-to-b from-bg via-bg-secondary to-bg pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative w-full max-w-6xl mx-auto px-5 sm:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14 sm:mb-20"
+          className="text-center mb-10 sm:mb-20"
         >
-          <span className="inline-block text-xs sm:text-sm font-semibold text-[#FF7A00] border border-[#FF7A00]/20 bg-[#FF7A00]/[0.06] px-4 py-1.5 rounded-full mb-5">
+          <span className="inline-block text-[11px] sm:text-sm font-semibold text-[#FF7A00] border border-[#FF7A00]/20 bg-[#FF7A00]/[0.06] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-4 sm:mb-5">
             Sound Familiar?
           </span>
-          <h2 className="heading text-3xl sm:text-4xl md:text-5xl text-fg mb-4">
+          <h2 className="heading text-2xl sm:text-4xl md:text-5xl text-fg mb-3 sm:mb-4">
             These Problems Are{" "}
             <span className="gradient-text">Costing You Money</span>
           </h2>
-          <p className="text-fg-subtle text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-fg-subtle text-sm sm:text-base max-w-xl mx-auto leading-relaxed px-2">
             If any of these sound like your business, you&apos;re not alone — and
             there&apos;s a better way.
           </p>
         </motion.div>
 
         {/* Bento grid */}
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid sm:grid-cols-2 gap-3 sm:gap-5">
           {pains.map((pain, i) => {
             const Icon = pain.icon;
             return (
@@ -76,15 +76,15 @@ export default function PainPoints() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                className="group relative rounded-3xl border border-card-border bg-card-bg p-6 sm:p-8 hover:border-[#FF7A00]/30 hover:bg-[#FF7A00]/[0.03] hover:-translate-y-1 transition-all duration-500"
+                className="group relative rounded-2xl sm:rounded-3xl border border-card-border bg-card-bg p-5 sm:p-8 hover:border-[#FF7A00]/30 hover:bg-[#FF7A00]/[0.03] hover:-translate-y-1 transition-all duration-500"
               >
-                <div className="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-5 group-hover:bg-[#FF7A00]/10 group-hover:border-[#FF7A00]/30 transition-colors duration-500">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-[#FF7A00]/10 group-hover:border-[#FF7A00]/30 transition-colors duration-500">
                   <Icon
-                    size={22}
-                    className="text-red-400 group-hover:text-[#FF7A00] transition-colors duration-500"
+                    size={20}
+                    className="text-red-400 group-hover:text-[#FF7A00] transition-colors duration-500 sm:w-[22px] sm:h-[22px]"
                   />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-fg mb-2 tracking-tight">
+                <h3 className="text-base sm:text-xl font-bold text-fg mb-1.5 sm:mb-2 tracking-tight">
                   {pain.title}
                 </h3>
                 <p className="text-sm text-fg-subtle leading-relaxed">
