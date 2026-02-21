@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import React, { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Target,
   TrendingUp,
@@ -105,7 +104,7 @@ const caseStudies = [
   },
 ];
 
-/* ─── Section label component ───────────────────────────── */
+/* ─── Section label ─────────────────────────────────────── */
 function SectionLabel({ icon: Icon, label }: { icon: React.ElementType; label: string }) {
   return (
     <div className="flex items-center gap-2 text-[#FF7A00] font-semibold text-sm mb-3">
@@ -118,319 +117,270 @@ function SectionLabel({ icon: Icon, label }: { icon: React.ElementType; label: s
 /* ─── Placeholder Box ────────────────────────────────────── */
 function PlaceholderBox({ label }: { label: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 bg-[var(--surface)] border-2 border-dashed border-[var(--border)] rounded-xl p-6 text-center">
-      <ImageOff size={20} className="text-[var(--fg-muted)] opacity-40" />
-      <span className="text-xs text-[var(--fg-muted)] font-medium">{label}</span>
+    <div className="flex flex-col items-center justify-center gap-2 bg-card-bg border-2 border-dashed border-card-border rounded-2xl p-6 text-center">
+      <ImageOff size={20} className="text-fg-subtle" />
+      <span className="text-xs text-fg-subtle font-medium">{label}</span>
     </div>
   );
 }
 
-/* ─── Full Case Study Modal ──────────────────────────────── */
+/* ─── Modal ──────────────────────────────────────────────── */
 function CaseStudyModal({ onClose }: { onClose: () => void }) {
   const cs = clearSkinCaseStudy;
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
-
-      {/* Panel */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 overflow-y-auto"
+    >
+      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
       <div className="relative min-h-screen flex items-start justify-center p-4 pt-8 sm:pt-12">
-        <div className="relative w-full max-w-4xl bg-[var(--surface)] rounded-3xl shadow-2xl overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 30 }}
+          transition={{ duration: 0.3 }}
+          className="relative w-full max-w-4xl bg-modal-bg rounded-3xl shadow-2xl shadow-black/50 border border-card-border overflow-hidden"
+        >
           {/* Header */}
-          <div className="bg-gradient-to-br from-[#FF7A00] to-[#CC5500] p-5 sm:p-8 text-white">
-            <div className="flex items-start justify-between gap-4">
+          <div className="relative bg-gradient-to-br from-[#FF7A00] to-[#CC5500] p-6 sm:p-8 text-white overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+            <div className="relative flex items-start justify-between gap-4">
               <div>
-                <div className="text-white/80 text-sm font-semibold mb-2">
-                  Case Study {cs.number}
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold mb-1">
-                  {cs.client}
-                </h2>
-                <p className="text-white/80 text-sm">{cs.type}</p>
+                <div className="text-white/70 text-sm font-semibold mb-2">Case Study {cs.number}</div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-1">{cs.client}</h2>
+                <p className="text-white/70 text-sm">{cs.type}</p>
               </div>
-              <button
-                onClick={onClose}
-                className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
-              >
+              <button onClick={onClose} className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
                 <X size={18} />
               </button>
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
               {cs.tools.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs bg-white/20 border border-white/30 px-3 py-1 rounded-full font-medium"
-                >
-                  {t}
-                </span>
+                <span key={t} className="text-xs bg-white/20 border border-white/30 px-3 py-1 rounded-full font-medium">{t}</span>
               ))}
             </div>
           </div>
 
           {/* Body */}
           <div className="p-6 sm:p-8 space-y-10">
-            {/* Overview */}
             <div>
               <SectionLabel icon={Lightbulb} label="Overview" />
-              <p className="text-[var(--fg-muted)] leading-relaxed text-sm sm:text-base">
-                {cs.overview}
-              </p>
+              <p className="text-fg-muted leading-relaxed text-sm sm:text-base">{cs.overview}</p>
             </div>
 
-            {/* Objectives */}
             <div>
               <SectionLabel icon={Target} label="Objectives" />
               <ul className="space-y-2">
                 {cs.objectives.map((obj, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--accent-muted)] text-[#FF7A00] text-xs font-bold flex items-center justify-center mt-0.5">
-                      {i + 1}
-                    </span>
-                    <span className="text-[var(--fg-muted)] text-sm leading-relaxed">
-                      {obj}
-                    </span>
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                    <span className="text-fg-muted text-sm leading-relaxed">{obj}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Challenge */}
             <div>
               <SectionLabel icon={Settings2} label="Challenge" />
-              <div className="bg-[var(--accent-muted)] border border-[#FF7A00]/20 rounded-xl p-5">
-                <p className="text-[var(--fg)] text-sm leading-relaxed">
-                  {cs.challenge}
-                </p>
+              <div className="bg-[#FF7A00]/[0.04] border border-[#FF7A00]/10 rounded-2xl p-5">
+                <p className="text-fg-muted text-sm leading-relaxed">{cs.challenge}</p>
               </div>
             </div>
 
-            {/* Strategy */}
             <div>
               <SectionLabel icon={Lightbulb} label="Strategy" />
               <div className="grid sm:grid-cols-2 gap-4">
                 {cs.strategy.map((s) => (
-                  <div
-                    key={s.title}
-                    className="bg-[var(--bg-secondary)] rounded-xl p-4 border border-[var(--border)]"
-                  >
-                    <h4 className="font-bold text-[var(--fg)] text-sm mb-2">
-                      {s.title}
-                    </h4>
-                    <p className="text-[var(--fg-muted)] text-xs leading-relaxed">
-                      {s.description}
-                    </p>
+                  <div key={s.title} className="bg-card-bg rounded-2xl p-4 border border-card-border">
+                    <h4 className="font-bold text-fg text-sm mb-2">{s.title}</h4>
+                    <p className="text-fg-subtle text-xs leading-relaxed">{s.description}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Execution */}
             <div>
               <SectionLabel icon={Settings2} label="Execution" />
               <ul className="space-y-2.5">
                 {cs.execution.map((step, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <ChevronRight
-                      size={16}
-                      className="text-[#FF7A00] mt-0.5 flex-shrink-0"
-                    />
-                    <span className="text-[var(--fg-muted)] text-sm">{step}</span>
+                    <ChevronRight size={16} className="text-[#FF7A00] mt-0.5 flex-shrink-0" />
+                    <span className="text-fg-muted text-sm">{step}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Results */}
             <div>
               <SectionLabel icon={BarChart3} label="Results" />
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {cs.results.map((r) => (
-                  <div
-                    key={r.metric}
-                    className="bg-[var(--accent-muted)] border border-[#FF7A00]/20 rounded-xl p-4 text-center"
-                  >
-                    <div className="text-[#FF7A00] font-extrabold text-sm mb-1">
-                      {r.value}
-                    </div>
-                    <div className="text-[var(--fg-muted)] text-xs">{r.note}</div>
+                  <div key={r.metric} className="bg-[#FF7A00]/[0.04] border border-[#FF7A00]/10 rounded-2xl p-4 text-center">
+                    <div className="text-[#FF7A00] font-extrabold text-sm mb-1">{r.value}</div>
+                    <div className="text-fg-subtle text-xs">{r.note}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Media Placeholders */}
             <div>
               <SectionLabel icon={ImageOff} label="Campaign Visuals (Placeholders)" />
               <div className="space-y-4">
                 <div>
-                  <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
-                    Ads Manager Screenshots
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {cs.placeholders.ads.map((p) => (
-                      <PlaceholderBox key={p} label={p} />
-                    ))}
-                  </div>
+                  <p className="text-xs text-zinc-500 font-semibold mb-2 uppercase tracking-wider">Ads Manager Screenshots</p>
+                  <div className="grid sm:grid-cols-2 gap-3">{cs.placeholders.ads.map((p) => <PlaceholderBox key={p} label={p} />)}</div>
                 </div>
                 <div>
-                  <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
-                    Reel Thumbnails
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {cs.placeholders.reels.map((p) => (
-                      <PlaceholderBox key={p} label={p} />
-                    ))}
-                  </div>
+                  <p className="text-xs text-zinc-500 font-semibold mb-2 uppercase tracking-wider">Reel Thumbnails</p>
+                  <div className="grid sm:grid-cols-2 gap-3">{cs.placeholders.reels.map((p) => <PlaceholderBox key={p} label={p} />)}</div>
                 </div>
                 <div>
-                  <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
-                    Post Samples
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {cs.placeholders.posts.map((p) => (
-                      <PlaceholderBox key={p} label={p} />
-                    ))}
-                  </div>
+                  <p className="text-xs text-zinc-500 font-semibold mb-2 uppercase tracking-wider">Post Samples</p>
+                  <div className="grid sm:grid-cols-2 gap-3">{cs.placeholders.posts.map((p) => <PlaceholderBox key={p} label={p} />)}</div>
                 </div>
               </div>
             </div>
 
-            {/* Tools */}
             <div>
               <SectionLabel icon={Wrench} label="Tools Used" />
               <div className="flex flex-wrap gap-2">
                 {cs.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="text-sm bg-[var(--bg-secondary)] text-[var(--fg)] border border-[var(--border)] px-3 py-1.5 rounded-lg font-medium"
-                  >
-                    {tool}
-                  </span>
+                  <span key={tool} className="text-sm bg-icon-bg text-fg-muted border border-card-border px-3 py-1.5 rounded-xl font-medium">{tool}</span>
                 ))}
               </div>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="border-t border-[var(--border)] p-4 sm:p-6 flex flex-wrap justify-between items-center gap-3">
-            <p className="text-xs text-[var(--fg-muted)] flex-1 min-w-0">
-              Content details are summarized for confidentiality.
-            </p>
-            <Button variant="outline" size="sm" onClick={onClose}>
+          <div className="border-t border-card-border p-4 sm:p-6 flex flex-wrap justify-between items-center gap-3">
+            <p className="text-xs text-fg-subtle flex-1 min-w-0">Details summarized for confidentiality.</p>
+            <button onClick={onClose} className="inline-flex items-center gap-2 h-9 px-5 text-xs font-semibold rounded-full border border-card-border text-fg-muted hover:text-fg hover:border-card-border transition-all">
               Close
-            </Button>
+            </button>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 /* ─── Main Section ────────────────────────────────────── */
 export default function CaseStudies() {
   const [openModal, setOpenModal] = useState(false);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="case-studies" className="py-16 sm:py-24 bg-[var(--bg-secondary)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-center mb-4">
-          <Badge variant="accent">Case Studies</Badge>
-        </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--fg)] text-center mb-3 tracking-tight">
-          Real Work. Real Results.
-        </h2>
-        <p className="text-[var(--fg-muted)] text-center max-w-xl mx-auto mb-10 sm:mb-16 leading-relaxed">
-          Detailed breakdowns of social media and Meta ads campaigns run for
-          service-based businesses.
-        </p>
+    <section id="case-studies" ref={ref} className="relative py-24 sm:py-32">
+      <div className="absolute inset-0 bg-linear-to-b from-bg via-bg-secondary to-bg pointer-events-none" />
 
-        <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
-          {caseStudies.map((cs) => (
-            <div
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14 sm:mb-20"
+        >
+          <span className="inline-block text-xs sm:text-sm font-semibold text-[#FF7A00] border border-[#FF7A00]/20 bg-[#FF7A00]/[0.06] px-4 py-1.5 rounded-full mb-5">
+            Case Studies
+          </span>
+          <h2 className="heading text-3xl sm:text-4xl md:text-5xl text-fg mb-4">
+            Real Work. <span className="gradient-text">Real Results.</span>
+          </h2>
+          <p className="text-fg-subtle text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Detailed breakdowns of Meta ads campaigns that delivered measurable results
+            for service-based businesses.
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
+          {caseStudies.map((cs, i) => (
+            <motion.div
               key={cs.id}
-              className={`bg-[var(--surface)] rounded-3xl border overflow-hidden flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 group ${
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.12 }}
+              className={`group relative rounded-3xl border overflow-hidden flex flex-col transition-all duration-500 ${
                 cs.status === "coming-soon"
-                  ? "border-[var(--border)] opacity-70"
-                  : "border-[#FF7A00]/20 hover:-translate-y-1"
+                  ? "border-card-border opacity-60"
+                  : "border-[#FF7A00]/20 bg-card-bg hover:-translate-y-2 hover:border-[#FF7A00]/40 hover:shadow-xl hover:shadow-[#FF7A00]/5"
               }`}
             >
-              {/* Top banner */}
+              {/* Top accent */}
               <div
-                className={`h-2 w-full ${
+                className={`h-[2px] w-full ${
                   cs.status === "live"
-                    ? "bg-gradient-to-r from-[#FF7A00] to-[#CC5500]"
-                    : "bg-[var(--border)]"
+                    ? "bg-linear-to-r from-transparent via-[#FF7A00] to-transparent"
+                    : "bg-card-border"
                 }`}
               />
 
-              <div className="p-5 sm:p-8 flex flex-col flex-1">
-                {/* Number & tag */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-5xl sm:text-6xl font-black text-[var(--border)] select-none leading-none">
+              <div className="p-6 sm:p-8 flex flex-col flex-1">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-5xl sm:text-6xl font-black text-fg/[0.04] select-none leading-none">
                     {cs.number}
                   </span>
                   <div className="flex items-center gap-2">
-                    <Badge variant={cs.status === "live" ? "accent" : "secondary"}>
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                      cs.status === "live"
+                        ? "text-[#FF7A00] border border-[#FF7A00]/20 bg-[#FF7A00]/[0.06]"
+                        : "text-fg-subtle border border-card-border bg-card-bg"
+                    }`}>
                       {cs.tag}
-                    </Badge>
+                    </span>
                     {cs.status === "coming-soon" && (
-                      <Badge variant="secondary">Coming Soon</Badge>
+                      <span className="text-xs font-semibold text-fg-subtle border border-card-border bg-card-bg px-3 py-1 rounded-full">
+                        Coming Soon
+                      </span>
                     )}
                   </div>
                 </div>
 
-                {/* Client name */}
-                <h3 className="text-xl sm:text-2xl font-extrabold text-[var(--fg)] mb-1">
-                  {cs.client}
-                </h3>
-                <p className="text-[#FF7A00] text-sm font-semibold mb-4">
-                  {cs.type}
-                </p>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-fg mb-1 tracking-tight">{cs.client}</h3>
+                <p className="text-[#FF7A00] text-sm font-semibold mb-4">{cs.type}</p>
+                <p className="text-fg-subtle text-sm leading-relaxed mb-6 flex-1">{cs.summary}</p>
 
-                {/* Summary */}
-                <p className="text-[var(--fg-muted)] text-sm leading-relaxed mb-6 flex-1">
-                  {cs.summary}
-                </p>
-
-                {/* Results pills */}
+                {/* Result badges */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {cs.results.map((r) => (
                     <span
                       key={r}
-                      className="text-xs bg-[var(--accent-muted)] text-[#FF7A00] border border-[#FF7A00]/20 px-3 py-1 rounded-full font-medium"
+                      className="text-xs bg-[#FF7A00]/[0.06] text-[#FF7A00] border border-[#FF7A00]/15 px-3 py-1 rounded-full font-medium"
                     >
                       {r}
                     </span>
                   ))}
                 </div>
 
-                {/* CTA */}
                 {cs.status === "live" ? (
-                  <Button
-                    size="sm"
-                    className="w-full group-hover:bg-[#FF9230]"
+                  <button
                     onClick={() => setOpenModal(true)}
+                    className="w-full inline-flex items-center justify-center gap-2 h-11 text-sm font-semibold rounded-2xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 transition-all duration-300 active:scale-95"
                   >
                     View Full Case Study
                     <ExternalLink size={14} />
-                  </Button>
+                  </button>
                 ) : (
-                  <Button variant="outline" size="sm" className="w-full" disabled>
+                  <button
+                    disabled
+                    className="w-full inline-flex items-center justify-center gap-2 h-11 text-sm font-semibold rounded-2xl border border-card-border text-fg-subtle cursor-not-allowed"
+                  >
                     Details Coming Soon
-                  </Button>
+                  </button>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Modal */}
-      {openModal && <CaseStudyModal onClose={() => setOpenModal(false)} />}
+      <AnimatePresence>
+        {openModal && <CaseStudyModal onClose={() => setOpenModal(false)} />}
+      </AnimatePresence>
     </section>
   );
 }

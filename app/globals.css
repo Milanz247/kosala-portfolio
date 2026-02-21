@@ -1,99 +1,165 @@
 @import "tailwindcss";
 
-/* ── Design tokens resolved at runtime from CSS custom properties ── */
+/* ── Design tokens ─────────────────────────────────────────────── */
 @theme inline {
-  --color-bg:           var(--bg);
-  --color-bg-secondary: var(--bg-secondary);
-  --color-surface:      var(--surface);
-  --color-border:       var(--border);
-  --color-fg:           var(--fg);
-  --color-fg-muted:     var(--fg-muted);
-  --color-accent:       var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-muted: var(--accent-muted);
+  --color-bg:            var(--bg);
+  --color-bg-secondary:  var(--bg-secondary);
+  --color-surface:       var(--surface);
+  --color-border:        var(--border);
+  --color-fg:            var(--fg);
+  --color-fg-muted:      var(--fg-muted);
+  --color-fg-subtle:     var(--fg-subtle);
+  --color-accent:        var(--accent);
+  --color-accent-hover:  var(--accent-hover);
+  --color-accent-muted:  var(--accent-muted);
+  --color-card-bg:       var(--card-bg);
+  --color-card-bg-hover: var(--card-bg-hover);
+  --color-card-border:   var(--card-border);
+  --color-icon-bg:       var(--icon-bg);
+  --color-icon-border:   var(--icon-border);
+  --color-nav-bg:        var(--nav-bg);
+  --color-footer-bg:     var(--footer-bg);
+  --color-modal-bg:      var(--modal-bg);
 }
 
-/* ── Light Mode ──────────────────────────────────────────────────── */
+/* ── Light mode (default) ────────────────────────────────────────── */
 :root {
-  --bg:           #FAFAFA;
-  --bg-secondary: #F3F4F6;
-  --surface:      #FFFFFF;
-  --border:       #E5E7EB;
-  --fg:           #111111;
-  --fg-muted:     #6B7280;
-  --accent:       #FF7A00;
-  --accent-hover: #E06A00;
-  --accent-muted: #FFF0E0;
+  --bg:            #ffffff;
+  --bg-secondary:  #f8f9fb;
+  --surface:       #ffffff;
+  --border:        rgba(0,0,0,0.08);
+  --fg:            #18181b;
+  --fg-muted:      #52525b;
+  --fg-subtle:     #71717a;
+  --accent:        #FF7A00;
+  --accent-hover:  #e86e00;
+  --accent-muted:  rgba(255,122,0,0.06);
+  --card-bg:       rgba(0,0,0,0.02);
+  --card-bg-hover: rgba(0,0,0,0.05);
+  --card-border:   rgba(0,0,0,0.08);
+  --icon-bg:       rgba(0,0,0,0.04);
+  --icon-border:   rgba(0,0,0,0.08);
+  --nav-bg:        rgba(255,255,255,0.85);
+  --footer-bg:     #f8f9fb;
+  --modal-bg:      #ffffff;
+  --noise-opacity: 0.015;
+  --glass-bg:      rgba(255,255,255,0.6);
+  --glass-border:  rgba(0,0,0,0.06);
+  --selection-fg:  #18181b;
 }
 
-/* ── Dark Mode ───────────────────────────────────────────────────── */
+/* ── Dark mode ───────────────────────────────────────────────────── */
 .dark {
-  --bg:           #121212;
-  --bg-secondary: #1A1A1A;
-  --surface:      #1E1E1E;
-  --border:       #2A2A2A;
-  --fg:           #E5E7EB;
-  --fg-muted:     #9CA3AF;
-  --accent:       #FF7A00;
-  --accent-hover: #FF9230;
-  --accent-muted: #2A1800;
+  --bg:            #09090b;
+  --bg-secondary:  #0f0f12;
+  --surface:       #131316;
+  --border:        rgba(255,255,255,0.08);
+  --fg:            #f4f4f5;
+  --fg-muted:      #a1a1aa;
+  --fg-subtle:     #71717a;
+  --accent:        #FF7A00;
+  --accent-hover:  #FF9230;
+  --accent-muted:  rgba(255,122,0,0.08);
+  --card-bg:       rgba(255,255,255,0.02);
+  --card-bg-hover: rgba(255,255,255,0.05);
+  --card-border:   rgba(255,255,255,0.06);
+  --icon-bg:       rgba(255,255,255,0.04);
+  --icon-border:   rgba(255,255,255,0.08);
+  --nav-bg:        rgba(9,9,11,0.8);
+  --footer-bg:     #07070a;
+  --modal-bg:      #131316;
+  --noise-opacity: 0.03;
+  --glass-bg:      rgba(19,19,22,0.6);
+  --glass-border:  rgba(255,255,255,0.06);
+  --selection-fg:  #ffffff;
 }
 
-/* ── Base Resets ─────────────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+/* ── Base resets ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg);
   color: var(--fg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ── Noise overlay ───────────────────────────────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 3px;
+  background: rgba(255,122,0,0.4);
+  border-radius: 99px;
 }
+::-webkit-scrollbar-thumb:hover { background: #FF7A00; }
 
-/* ── Text Selection ──────────────────────────────────────────────── */
+/* ── Selection ───────────────────────────────────────────────────── */
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: rgba(255,122,0,0.3);
+  color: var(--selection-fg);
 }
 
-/* ── Gradient headline text ──────────────────────────────────────── */
+/* ── Gradient text ───────────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #FF7A00 0%, #FF4500 100%);
+  background: linear-gradient(135deg, #FF7A00 0%, #FF4500 50%, #FF7A00 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── FadeUp animation ────────────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0);    }
-}
-.animate-fade-up {
-  animation: fadeUp 0.6s ease forwards;
+/* ── Glow effect for accent elements ─────────────────────────────── */
+.glow-orange {
+  box-shadow:
+    0 0 20px rgba(255,122,0,0.15),
+    0 0 60px rgba(255,122,0,0.05);
 }
 
-/* ── Pulse ring (WhatsApp float) ─────────────────────────────────── */
-@keyframes ping-orange {
-  0%   { transform: scale(1);   opacity: 0.7; }
-  100% { transform: scale(1.6); opacity: 0;   }
+/* ── Glass card ──────────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  border: 1px solid var(--glass-border);
 }
-.ping-orange {
-  animation: ping-orange 1.6s cubic-bezier(0,0,0.2,1) infinite;
+
+/* ── Mesh gradient blobs ─────────────────────────────────────────── */
+.mesh-gradient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+/* ── WhatsApp ping ───────────────────────────────────────────────── */
+@keyframes ping-green {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0;   }
+}
+.ping-green {
+  animation: ping-green 2s cubic-bezier(0,0,0.2,1) infinite;
+}
+
+/* ── Heading style utility ───────────────────────────────────────── */
+.heading {
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-weight: 800;
 }

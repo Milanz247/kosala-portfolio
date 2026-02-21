@@ -1,14 +1,22 @@
 "use client";
 
 import React from "react";
-import { MessageCircle, ArrowUp } from "lucide-react";
+import { MessageCircle, ArrowUp, Mail, Globe, Camera } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Case Studies", href: "#case-studies" },
-  { label: "Skills", href: "#skills" },
+  { label: "Process", href: "#process" },
+  { label: "Toolbox", href: "#skills" },
   { label: "Contact", href: "#contact" },
+];
+
+const socialLinks = [
+  { icon: MessageCircle, href: "https://wa.me/94XXXXXXXXX?text=Hi Kosala, I'd like to discuss a project.", label: "WhatsApp" },
+  { icon: Mail, href: "mailto:kosala@example.com", label: "Email" },
+  { icon: Globe, href: "https://linkedin.com/in/kosala", label: "LinkedIn" },
+  { icon: Camera, href: "https://instagram.com/kosalasocialmedia", label: "Instagram" },
 ];
 
 export default function Footer() {
@@ -19,18 +27,17 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0A0A0A] text-[var(--fg-muted)] border-t border-[var(--border)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <footer className="bg-footer-bg border-t border-card-border">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Brand */}
           <div>
-            <div className="text-white font-extrabold text-xl mb-2">
+            <div className="text-fg font-extrabold text-xl tracking-tight mb-2">
               Kosala<span className="text-[#FF7A00]">.</span>
             </div>
-            <p className="text-sm text-[var(--fg-muted)] max-w-xs leading-relaxed">
-              Social Media Manager & Meta Ads Specialist helping service-based
-              businesses grow through structured content and performance
-              marketing.
+            <p className="text-sm text-fg-subtle max-w-xs leading-relaxed">
+              Meta Ads Strategist helping service-based businesses scale through
+              high-converting ads and structured content marketing.
             </p>
           </div>
 
@@ -41,48 +48,53 @@ export default function Footer() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => scrollTo(e, link.href)}
-                className="text-sm hover:text-[#FF7A00] transition-colors"
+                className="text-sm text-fg-subtle hover:text-[#FF7A00] transition-colors duration-300"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* WhatsApp */}
-          <button
-            onClick={() =>
-              window.open(
-                "https://wa.me/94XXXXXXXXX?text=Hi Kosala, I'd like to discuss a project.",
-                "_blank"
-              )
-            }
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
-          >
-            <MessageCircle size={16} />
-            WhatsApp
-          </button>
+          {/* Social Icons */}
+          <div className="flex items-center gap-2">
+            {socialLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="group w-9 h-9 rounded-xl bg-icon-bg border border-card-border flex items-center justify-center hover:bg-[#FF7A00]/10 hover:border-[#FF7A00]/30 transition-all duration-300"
+                >
+                  <Icon size={15} className="text-fg-subtle group-hover:text-[#FF7A00] transition-colors duration-300" />
+                </a>
+              );
+            })}
+          </div>
         </div>
 
-        <div className="border-t border-[var(--border)] mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-[var(--fg-muted)] opacity-60 text-center sm:text-left">
+        <div className="border-t border-card-border mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-fg-subtle text-center sm:text-left">
             © {new Date().getFullYear()} Kosala Dananjaya. All rights reserved.
           </p>
-          <p className="text-xs text-[var(--fg-muted)] opacity-60 text-center">
-            Social Media Manager · Al Ain, UAE
+          <p className="text-xs text-fg-subtle text-center">
+            Meta Ads Strategist · Al Ain, UAE
           </p>
           <button
             onClick={scrollToTop}
-            className="w-8 h-8 rounded-lg bg-[var(--bg-secondary)] hover:bg-[#FF7A00] flex items-center justify-center transition-colors border border-[var(--border)]"
+            className="group w-8 h-8 rounded-xl bg-icon-bg hover:bg-[#FF7A00] flex items-center justify-center transition-all duration-300 border border-card-border hover:border-[#FF7A00]"
             aria-label="Back to top"
           >
-            <ArrowUp size={14} className="text-[var(--fg-muted)] group-hover:text-white" />
+            <ArrowUp size={14} className="text-fg-subtle group-hover:text-white transition-colors" />
           </button>
         </div>
 
         <div className="mt-4 text-center">
-          <p className="text-[10px] text-[var(--fg-muted)] opacity-40">
+          <p className="text-[10px] text-fg-subtle">
             Developed by{" "}
-            <span className="hover:text-[#FF7A00] hover:opacity-100 transition-colors cursor-default">
+            <span className="hover:text-[#FF7A00] transition-colors cursor-default">
               Kavindu Manahara
             </span>
           </p>

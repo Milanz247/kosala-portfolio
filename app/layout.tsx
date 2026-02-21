@@ -1,29 +1,34 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Kosala Dananjaya | Social Media Manager & Meta Ads Specialist",
+  title: "Kosala Dananjaya | Meta Ads Strategist — Scale With Ads That Deliver",
   description:
-    "Helping service-based businesses generate inquiries and customers through social media and Meta advertising. Based in Al Ain, UAE.",
+    "I help service-based businesses generate loyal customers through data-driven Meta advertising. Partner, not an agency. Based in Al Ain, UAE.",
   keywords: [
-    "Social Media Manager",
     "Meta Ads Specialist",
+    "Meta Ads Strategist",
+    "Social Media Manager",
     "Performance Marketing",
+    "Lead Generation",
     "UAE",
     "Sri Lanka",
     "Kosala Dananjaya",
+    "Facebook Ads",
+    "Instagram Ads",
   ],
   openGraph: {
-    title: "Kosala Dananjaya | Social Media Manager & Meta Ads Specialist",
+    title: "Kosala Dananjaya | Meta Ads Strategist",
     description:
-      "Helping service-based businesses generate inquiries through social media and Meta advertising.",
+      "Your Business, Scaled With Meta Ads That Deliver Loyal Customers.",
     type: "website",
   },
 };
@@ -35,13 +40,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange={false}
-        >
+      <body className={`${inter.variable} font-sans antialiased bg-bg text-fg`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>
