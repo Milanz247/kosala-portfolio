@@ -55,13 +55,61 @@ export default function Footer() {
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#FF7A00]/5 blur-3xl pointer-events-none rounded-full" />
 
-      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 pt-14 pb-8">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 pt-10 sm:pt-14 pb-6 sm:pb-8">
 
-        {/* ── Top grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        {/* ══ MOBILE LAYOUT (hidden on lg+) ══ */}
+        <div className="lg:hidden mb-8">
+          {/* Brand */}
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-8 h-8 rounded-xl bg-linear-to-br from-[#FF7A00] to-[#CC5500] flex items-center justify-center shadow-lg shadow-[#FF7A00]/20">
+              <span className="text-white font-black text-sm leading-none">K</span>
+            </div>
+            <span className="text-fg font-extrabold text-lg tracking-tight">
+              Kosala<span className="text-[#FF7A00]">.</span>
+            </span>
+          </div>
+          <p className="text-xs text-fg-subtle leading-relaxed mb-5">
+            Helping businesses in UAE &amp; Sri Lanka grow through Meta Ads &amp; content marketing.
+          </p>
+
+          {/* Social icons row */}
+          <div className="flex items-center gap-2 mb-5">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                style={{ "--brand": link.brandColor } as React.CSSProperties}
+                className="w-9 h-9 rounded-xl bg-icon-bg border border-card-border flex items-center justify-center hover:border-[var(--brand)]/50 hover:bg-[var(--brand)]/10 text-fg-subtle hover:text-[var(--brand)] transition-all"
+              >
+                <link.Icon />
+              </a>
+            ))}
+          </div>
+
+          {/* Nav links — horizontal wrap */}
+          <div className="flex flex-wrap gap-x-4 gap-y-2 mb-5">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => scrollTo(e, link.href)}
+                className="text-xs text-fg-subtle hover:text-[#FF7A00] transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+        </div>
+
+        {/* ══ DESKTOP LAYOUT (hidden below lg) ══ */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-10 mb-12">
 
           {/* Brand column */}
-          <div className="sm:col-span-2 lg:col-span-2">
+          <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-9 h-9 rounded-xl bg-linear-to-br from-[#FF7A00] to-[#CC5500] flex items-center justify-center shadow-lg shadow-[#FF7A00]/20">
                 <span className="text-white font-black text-base leading-none">K</span>
@@ -74,25 +122,24 @@ export default function Footer() {
               Helping service-based businesses in UAE &amp; Sri Lanka generate loyal customers
               through data-driven Meta advertising and structured content marketing.
             </p>
-            {/* Contact details */}
             <div className="flex flex-col gap-2">
               <a href="https://wa.me/94XXXXXXXXX" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-xs text-fg-subtle hover:text-[#FF7A00] transition-colors group w-fit">
                 <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center group-hover:border-[#FF7A00]/30 transition-colors">
-                  <Phone size={12} className="text-fg-subtle group-hover:text-[#FF7A00] transition-colors" />
+                  <Phone size={12} className="group-hover:text-[#FF7A00] transition-colors" />
                 </div>
                 +94 XX XXX XXXX
               </a>
               <a href="mailto:kosala@example.com"
                 className="flex items-center gap-2.5 text-xs text-fg-subtle hover:text-[#FF7A00] transition-colors group w-fit">
                 <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center group-hover:border-[#FF7A00]/30 transition-colors">
-                  <Mail size={12} className="text-fg-subtle group-hover:text-[#FF7A00] transition-colors" />
+                  <Mail size={12} className="group-hover:text-[#FF7A00] transition-colors" />
                 </div>
                 kosala@example.com
               </a>
               <div className="flex items-center gap-2.5 text-xs text-fg-subtle">
                 <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center">
-                  <MapPin size={12} className="text-fg-subtle" />
+                  <MapPin size={12} />
                 </div>
                 Al Ain, UAE
               </div>
@@ -104,13 +151,9 @@ export default function Footer() {
             <p className="text-xs font-bold text-fg uppercase tracking-widest mb-4">Quick Links</p>
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => scrollTo(e, link.href)}
-                  className="text-sm text-fg-subtle hover:text-[#FF7A00] transition-colors duration-200 flex items-center gap-1.5 group w-fit"
-                >
-                  <span className="w-1 h-1 rounded-full bg-[#FF7A00]/40 group-hover:bg-[#FF7A00] transition-colors" />
+                <a key={link.href} href={link.href} onClick={(e) => scrollTo(e, link.href)}
+                  className="text-sm text-fg-subtle hover:text-[#FF7A00] transition-colors flex items-center gap-1.5 group w-fit">
+                  <span className="w-1 h-1 rounded-full bg-[#FF7A00]/40 group-hover:bg-[#FF7A00] transition-colors shrink-0" />
                   {link.label}
                 </a>
               ))}
@@ -122,32 +165,16 @@ export default function Footer() {
             <p className="text-xs font-bold text-fg uppercase tracking-widest mb-4">Follow Me</p>
             <div className="flex flex-col gap-2 mb-6">
               {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer"
                   style={{ "--brand": link.brandColor } as React.CSSProperties}
-                  className="flex items-center gap-2.5 text-sm text-fg-subtle hover:text-[var(--brand)] transition-colors duration-200 group w-fit"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center group-hover:border-[var(--brand)]/40 group-hover:bg-[var(--brand)]/10 transition-all">
-                    <span className="group-hover:text-[var(--brand)] transition-colors">
-                      <link.Icon />
-                    </span>
+                  className="flex items-center gap-2.5 text-sm text-fg-subtle hover:text-[var(--brand)] transition-colors group w-fit">
+                  <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center group-hover:border-[var(--brand)]/40 group-hover:bg-[var(--brand)]/10 transition-all shrink-0">
+                    <span className="group-hover:text-[var(--brand)] transition-colors"><link.Icon /></span>
                   </div>
                   {link.label}
                 </a>
               ))}
             </div>
-            {/* CTA */}
-            <a
-              href="https://wa.me/94XXXXXXXXX?text=Hi Kosala, I'd like to discuss a project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#FF7A00] hover:bg-[#FF9230] px-4 py-2.5 rounded-xl transition-colors shadow-lg shadow-[#FF7A00]/20"
-            >
-              Book a Free Call →
-            </a>
           </div>
         </div>
 
@@ -159,10 +186,23 @@ export default function Footer() {
           <p className="text-[11px] text-fg-subtle text-center sm:text-left order-2 sm:order-1">
             © {new Date().getFullYear()} Kosala Dananjaya. All rights reserved.
           </p>
-          <p className="text-[11px] text-fg-subtle order-3 sm:order-2">
-            Developed by{" "}
-            <span className="text-[#FF7A00] font-semibold">Milan Madusanka</span>
-          </p>
+
+          {/* Developer credit — professional badge */}
+          <a
+            href="https://milanmadusanka.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="order-3 sm:order-2 group flex items-center gap-2 px-3 py-1.5 rounded-full border border-card-border bg-icon-bg hover:border-[#FF7A00]/40 hover:bg-[#FF7A00]/5 transition-all duration-300"
+          >
+            <span className="text-[10px] text-fg-subtle group-hover:text-fg transition-colors">Designed &amp; Developed by</span>
+            <span className="flex items-center gap-1">
+              <span className="w-4 h-4 rounded-full bg-linear-to-br from-[#FF7A00] to-[#CC5500] flex items-center justify-center shrink-0">
+                <span className="text-white font-black text-[8px] leading-none">M</span>
+              </span>
+              <span className="text-[11px] font-bold text-[#FF7A00] group-hover:text-[#FF9230] transition-colors">Milan Madusanka</span>
+            </span>
+          </a>
+
           <button
             onClick={scrollToTop}
             className="group w-9 h-9 rounded-xl bg-icon-bg hover:bg-[#FF7A00] flex items-center justify-center transition-all duration-300 border border-card-border hover:border-[#FF7A00] order-1 sm:order-3 touch-target"
