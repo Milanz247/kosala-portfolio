@@ -14,7 +14,12 @@ import {
   ExternalLink,
   ChevronRight,
   ImageOff,
+  AlertTriangle,
+  Zap,
+  CheckCircle2,
 } from "lucide-react";
+import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/reveal";
+import { motion, AnimatePresence } from "framer-motion";
 
 /* ─── Case Study Data ─────────────────────────────────── */
 const clearSkinCaseStudy = {
@@ -87,10 +92,18 @@ const caseStudies = [
     client: "Clear Skin Panadura",
     tag: "Skincare Clinic",
     type: "Social Media Management & Meta Ads Campaign",
-    summary:
-      "Built brand awareness from scratch and generated consistent customer inquiries for a skincare clinic in Panadura, Sri Lanka through structured content and targeted Meta advertising.",
-    results: ["Consistent WhatsApp inquiries", "Organic reach growth", "Lower CPR achieved"],
     status: "live",
+    problem:
+      "The clinic had minimal social media presence and no digital marketing strategy. Money was being spent on boosted posts with zero targeting — leading to low inquiries and wasted budget.",
+    action:
+      "Built a complete content strategy from scratch, launched Facebook & Instagram ad campaigns targeting women 18–45 within 20km, designed WhatsApp-focused CTAs, and created branded Reels and posts to build authority.",
+    result:
+      "Consistent inbound inquiries via WhatsApp & DM, significant organic reach growth, and lower cost-per-result through continuous A/B testing and optimization.",
+    metrics: [
+      { label: "WhatsApp Inquiries", value: "Consistent" },
+      { label: "Organic Reach", value: "Significant Growth" },
+      { label: "Cost Per Result", value: "Lower CPR" },
+    ],
   },
   {
     id: "braces-dental",
@@ -98,10 +111,18 @@ const caseStudies = [
     client: "Braces & Specialist Dental Clinic",
     tag: "Dental Clinic",
     type: "Social Media Management & Content Strategy",
-    summary:
-      "Content strategy and social media management tailored for a specialist dental clinic — positioning, educational content, and organic growth focus.",
-    results: ["Content strategy developed", "Audience targeting defined", "Coming soon"],
     status: "coming-soon",
+    problem:
+      "The clinic needed to differentiate itself in a competitive local market and establish trust with potential patients online before they ever walked through the door.",
+    action:
+      "Developed educational content positioning the clinic as the specialist authority, created audience-targeted content pillars, and planned an organic growth strategy.",
+    result:
+      "Content strategy developed, audience targeting defined, and campaign launch planned.",
+    metrics: [
+      { label: "Content Strategy", value: "Developed" },
+      { label: "Audience Targeting", value: "Defined" },
+      { label: "Campaign", value: "Coming Soon" },
+    ],
   },
 ];
 
@@ -118,7 +139,7 @@ function SectionLabel({ icon: Icon, label }: { icon: React.ElementType; label: s
 /* ─── Placeholder Box ────────────────────────────────────── */
 function PlaceholderBox({ label }: { label: string }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 bg-[var(--surface)] border-2 border-dashed border-[var(--border)] rounded-xl p-6 text-center">
+    <div className="flex flex-col items-center justify-center gap-2 glass rounded-2xl p-6 text-center border-2 border-dashed border-[var(--border)]">
       <ImageOff size={20} className="text-[var(--fg-muted)] opacity-40" />
       <span className="text-xs text-[var(--fg-muted)] font-medium">{label}</span>
     </div>
@@ -130,203 +151,214 @@ function CaseStudyModal({ onClose }: { onClose: () => void }) {
   const cs = clearSkinCaseStudy;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
+    <AnimatePresence>
+      <div className="fixed inset-0 z-50 overflow-y-auto">
+        {/* Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/60 backdrop-blur-md"
+          onClick={onClose}
+        />
 
-      {/* Panel */}
-      <div className="relative min-h-screen flex items-start justify-center p-4 pt-8 sm:pt-12">
-        <div className="relative w-full max-w-4xl bg-[var(--surface)] rounded-3xl shadow-2xl overflow-hidden">
-          {/* Header */}
-          <div className="bg-gradient-to-br from-[#FF7A00] to-[#CC5500] p-5 sm:p-8 text-white">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="text-white/80 text-sm font-semibold mb-2">
-                  Case Study {cs.number}
+        {/* Panel */}
+        <div className="relative min-h-screen flex items-start justify-center p-4 pt-8 sm:pt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+            className="relative w-full max-w-4xl glass rounded-3xl shadow-2xl overflow-hidden"
+          >
+            {/* Header */}
+            <div className="bg-gradient-to-br from-[#FF7A00] to-[#CC5500] p-5 sm:p-8 text-white">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-white/80 text-sm font-semibold mb-2">
+                    Case Study {cs.number}
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold mb-1">
+                    {cs.client}
+                  </h2>
+                  <p className="text-white/80 text-sm">{cs.type}</p>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold mb-1">
-                  {cs.client}
-                </h2>
-                <p className="text-white/80 text-sm">{cs.type}</p>
-              </div>
-              <button
-                onClick={onClose}
-                className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
-              >
-                <X size={18} />
-              </button>
-            </div>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {cs.tools.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs bg-white/20 border border-white/30 px-3 py-1 rounded-full font-medium"
+                <button
+                  onClick={onClose}
+                  className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
                 >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Body */}
-          <div className="p-6 sm:p-8 space-y-10">
-            {/* Overview */}
-            <div>
-              <SectionLabel icon={Lightbulb} label="Overview" />
-              <p className="text-[var(--fg-muted)] leading-relaxed text-sm sm:text-base">
-                {cs.overview}
-              </p>
-            </div>
-
-            {/* Objectives */}
-            <div>
-              <SectionLabel icon={Target} label="Objectives" />
-              <ul className="space-y-2">
-                {cs.objectives.map((obj, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--accent-muted)] text-[#FF7A00] text-xs font-bold flex items-center justify-center mt-0.5">
-                      {i + 1}
-                    </span>
-                    <span className="text-[var(--fg-muted)] text-sm leading-relaxed">
-                      {obj}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Challenge */}
-            <div>
-              <SectionLabel icon={Settings2} label="Challenge" />
-              <div className="bg-[var(--accent-muted)] border border-[#FF7A00]/20 rounded-xl p-5">
-                <p className="text-[var(--fg)] text-sm leading-relaxed">
-                  {cs.challenge}
-                </p>
+                  <X size={18} />
+                </button>
               </div>
-            </div>
-
-            {/* Strategy */}
-            <div>
-              <SectionLabel icon={Lightbulb} label="Strategy" />
-              <div className="grid sm:grid-cols-2 gap-4">
-                {cs.strategy.map((s) => (
-                  <div
-                    key={s.title}
-                    className="bg-[var(--bg-secondary)] rounded-xl p-4 border border-[var(--border)]"
-                  >
-                    <h4 className="font-bold text-[var(--fg)] text-sm mb-2">
-                      {s.title}
-                    </h4>
-                    <p className="text-[var(--fg-muted)] text-xs leading-relaxed">
-                      {s.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Execution */}
-            <div>
-              <SectionLabel icon={Settings2} label="Execution" />
-              <ul className="space-y-2.5">
-                {cs.execution.map((step, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <ChevronRight
-                      size={16}
-                      className="text-[#FF7A00] mt-0.5 flex-shrink-0"
-                    />
-                    <span className="text-[var(--fg-muted)] text-sm">{step}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Results */}
-            <div>
-              <SectionLabel icon={BarChart3} label="Results" />
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {cs.results.map((r) => (
-                  <div
-                    key={r.metric}
-                    className="bg-[var(--accent-muted)] border border-[#FF7A00]/20 rounded-xl p-4 text-center"
-                  >
-                    <div className="text-[#FF7A00] font-extrabold text-sm mb-1">
-                      {r.value}
-                    </div>
-                    <div className="text-[var(--fg-muted)] text-xs">{r.note}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Media Placeholders */}
-            <div>
-              <SectionLabel icon={ImageOff} label="Campaign Visuals (Placeholders)" />
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
-                    Ads Manager Screenshots
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {cs.placeholders.ads.map((p) => (
-                      <PlaceholderBox key={p} label={p} />
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
-                    Reel Thumbnails
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {cs.placeholders.reels.map((p) => (
-                      <PlaceholderBox key={p} label={p} />
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
-                    Post Samples
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {cs.placeholders.posts.map((p) => (
-                      <PlaceholderBox key={p} label={p} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Tools */}
-            <div>
-              <SectionLabel icon={Wrench} label="Tools Used" />
-              <div className="flex flex-wrap gap-2">
-                {cs.tools.map((tool) => (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {cs.tools.map((t) => (
                   <span
-                    key={tool}
-                    className="text-sm bg-[var(--bg-secondary)] text-[var(--fg)] border border-[var(--border)] px-3 py-1.5 rounded-lg font-medium"
+                    key={t}
+                    className="text-xs bg-white/20 border border-white/30 px-3 py-1 rounded-full font-medium"
                   >
-                    {tool}
+                    {t}
                   </span>
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* Footer */}
-          <div className="border-t border-[var(--border)] p-4 sm:p-6 flex flex-wrap justify-between items-center gap-3">
-            <p className="text-xs text-[var(--fg-muted)] flex-1 min-w-0">
-              Content details are summarized for confidentiality.
-            </p>
-            <Button variant="outline" size="sm" onClick={onClose}>
-              Close
-            </Button>
-          </div>
+            {/* Body */}
+            <div className="p-6 sm:p-8 space-y-10">
+              {/* Overview */}
+              <div>
+                <SectionLabel icon={Lightbulb} label="Overview" />
+                <p className="text-[var(--fg-muted)] leading-relaxed text-sm sm:text-base">
+                  {cs.overview}
+                </p>
+              </div>
+
+              {/* Objectives */}
+              <div>
+                <SectionLabel icon={Target} label="Objectives" />
+                <ul className="space-y-2">
+                  {cs.objectives.map((obj, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--accent-muted)] text-[#FF7A00] text-xs font-bold flex items-center justify-center mt-0.5">
+                        {i + 1}
+                      </span>
+                      <span className="text-[var(--fg-muted)] text-sm leading-relaxed">
+                        {obj}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Challenge */}
+              <div>
+                <SectionLabel icon={Settings2} label="Challenge" />
+                <div className="bg-[var(--accent-muted)] border border-[#FF7A00]/20 rounded-2xl p-5">
+                  <p className="text-[var(--fg)] text-sm leading-relaxed">
+                    {cs.challenge}
+                  </p>
+                </div>
+              </div>
+
+              {/* Strategy */}
+              <div>
+                <SectionLabel icon={Lightbulb} label="Strategy" />
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {cs.strategy.map((s) => (
+                    <div
+                      key={s.title}
+                      className="glass rounded-2xl p-4"
+                    >
+                      <h4 className="font-bold text-[var(--fg)] text-sm mb-2">
+                        {s.title}
+                      </h4>
+                      <p className="text-[var(--fg-muted)] text-xs leading-relaxed">
+                        {s.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Execution */}
+              <div>
+                <SectionLabel icon={Settings2} label="Execution" />
+                <ul className="space-y-2.5">
+                  {cs.execution.map((step, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <ChevronRight
+                        size={16}
+                        className="text-[#FF7A00] mt-0.5 flex-shrink-0"
+                      />
+                      <span className="text-[var(--fg-muted)] text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Results */}
+              <div>
+                <SectionLabel icon={BarChart3} label="Results" />
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {cs.results.map((r) => (
+                    <div
+                      key={r.metric}
+                      className="glass rounded-2xl p-4 text-center"
+                    >
+                      <div className="text-[#FF7A00] font-extrabold text-sm mb-1">
+                        {r.value}
+                      </div>
+                      <div className="text-[var(--fg-muted)] text-xs">{r.note}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Media Placeholders */}
+              <div>
+                <SectionLabel icon={ImageOff} label="Campaign Visuals (Placeholders)" />
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
+                      Ads Manager Screenshots
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {cs.placeholders.ads.map((p) => (
+                        <PlaceholderBox key={p} label={p} />
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
+                      Reel Thumbnails
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {cs.placeholders.reels.map((p) => (
+                        <PlaceholderBox key={p} label={p} />
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[var(--fg-muted)] font-semibold mb-2 uppercase tracking-wide">
+                      Post Samples
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {cs.placeholders.posts.map((p) => (
+                        <PlaceholderBox key={p} label={p} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tools */}
+              <div>
+                <SectionLabel icon={Wrench} label="Tools Used" />
+                <div className="flex flex-wrap gap-2">
+                  {cs.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="text-sm glass px-3 py-1.5 rounded-xl font-medium text-[var(--fg)]"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="border-t border-[var(--border)] p-4 sm:p-6 flex flex-wrap justify-between items-center gap-3">
+              <p className="text-xs text-[var(--fg-muted)] flex-1 min-w-0">
+                Content details are summarized for confidentiality.
+              </p>
+              <Button variant="outline" size="sm" className="rounded-2xl" onClick={onClose}>
+                Close
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }
 
@@ -335,98 +367,134 @@ export default function CaseStudies() {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <section id="case-studies" className="py-16 sm:py-24 bg-[var(--bg-secondary)]">
+    <section id="case-studies" className="py-24 sm:py-32 bg-[var(--bg-secondary)] relative overflow-hidden mesh-gradient-section">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-center mb-4">
-          <Badge variant="accent">Case Studies</Badge>
-        </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--fg)] text-center mb-3 tracking-tight">
-          Real Work. Real Results.
-        </h2>
-        <p className="text-[var(--fg-muted)] text-center max-w-xl mx-auto mb-10 sm:mb-16 leading-relaxed">
-          Detailed breakdowns of social media and Meta ads campaigns run for
-          service-based businesses.
-        </p>
-
-        <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
-          {caseStudies.map((cs) => (
-            <div
-              key={cs.id}
-              className={`bg-[var(--surface)] rounded-3xl border overflow-hidden flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 group ${
-                cs.status === "coming-soon"
-                  ? "border-[var(--border)] opacity-70"
-                  : "border-[#FF7A00]/20 hover:-translate-y-1"
-              }`}
-            >
-              {/* Top banner */}
-              <div
-                className={`h-2 w-full ${
-                  cs.status === "live"
-                    ? "bg-gradient-to-r from-[#FF7A00] to-[#CC5500]"
-                    : "bg-[var(--border)]"
-                }`}
-              />
-
-              <div className="p-5 sm:p-8 flex flex-col flex-1">
-                {/* Number & tag */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-5xl sm:text-6xl font-black text-[var(--border)] select-none leading-none">
-                    {cs.number}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    <Badge variant={cs.status === "live" ? "accent" : "secondary"}>
-                      {cs.tag}
-                    </Badge>
-                    {cs.status === "coming-soon" && (
-                      <Badge variant="secondary">Coming Soon</Badge>
-                    )}
-                  </div>
-                </div>
-
-                {/* Client name */}
-                <h3 className="text-xl sm:text-2xl font-extrabold text-[var(--fg)] mb-1">
-                  {cs.client}
-                </h3>
-                <p className="text-[#FF7A00] text-sm font-semibold mb-4">
-                  {cs.type}
-                </p>
-
-                {/* Summary */}
-                <p className="text-[var(--fg-muted)] text-sm leading-relaxed mb-6 flex-1">
-                  {cs.summary}
-                </p>
-
-                {/* Results pills */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {cs.results.map((r) => (
-                    <span
-                      key={r}
-                      className="text-xs bg-[var(--accent-muted)] text-[#FF7A00] border border-[#FF7A00]/20 px-3 py-1 rounded-full font-medium"
-                    >
-                      {r}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                {cs.status === "live" ? (
-                  <Button
-                    size="sm"
-                    className="w-full group-hover:bg-[#FF9230]"
-                    onClick={() => setOpenModal(true)}
-                  >
-                    View Full Case Study
-                    <ExternalLink size={14} />
-                  </Button>
-                ) : (
-                  <Button variant="outline" size="sm" className="w-full" disabled>
-                    Details Coming Soon
-                  </Button>
-                )}
-              </div>
+        <Reveal>
+          <div className="text-center mb-12 sm:mb-20">
+            <div className="flex items-center justify-center mb-5">
+              <Badge variant="accent">Case Studies</Badge>
             </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--fg)] mb-4 tracking-tight leading-[1.1]">
+              Real Work. Real Results.
+            </h2>
+            <p className="text-[var(--fg-muted)] max-w-xl mx-auto leading-relaxed">
+              Detailed breakdowns of social media and Meta ads campaigns run for
+              service-based businesses.
+            </p>
+          </div>
+        </Reveal>
+
+        <StaggerContainer className="grid sm:grid-cols-2 gap-5 sm:gap-8" staggerDelay={0.2}>
+          {caseStudies.map((cs) => (
+            <StaggerItem key={cs.id}>
+              <div
+                className={`glass rounded-3xl overflow-hidden flex flex-col glow-hover group ${
+                  cs.status === "coming-soon"
+                    ? "opacity-70"
+                    : "ring-1 ring-[#FF7A00]/10"
+                }`}
+              >
+                {/* Top banner */}
+                <div
+                  className={`h-[3px] w-full ${
+                    cs.status === "live"
+                      ? "bg-gradient-to-r from-[#FF7A00] to-[#CC5500]"
+                      : "bg-[var(--border)]"
+                  }`}
+                />
+
+                <div className="p-5 sm:p-8 flex flex-col flex-1">
+                  {/* Number & tag */}
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-5xl sm:text-6xl font-black text-[var(--fg)]/5 select-none leading-none">
+                      {cs.number}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={cs.status === "live" ? "accent" : "secondary"}>
+                        {cs.tag}
+                      </Badge>
+                      {cs.status === "coming-soon" && (
+                        <Badge variant="secondary">Coming Soon</Badge>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Client name */}
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[var(--fg)] mb-1">
+                    {cs.client}
+                  </h3>
+                  <p className="text-[#FF7A00] text-sm font-semibold mb-6">
+                    {cs.type}
+                  </p>
+
+                  {/* Problem → Action → Result */}
+                  <div className="space-y-4 mb-6 flex-1">
+                    {/* Problem */}
+                    <div className="flex gap-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-red-500/10 flex items-center justify-center mt-0.5">
+                        <AlertTriangle size={14} className="text-red-500" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-red-500 uppercase tracking-wider mb-1">The Problem</p>
+                        <p className="text-xs sm:text-sm text-[var(--fg-muted)] leading-relaxed">{cs.problem}</p>
+                      </div>
+                    </div>
+
+                    {/* Action */}
+                    <div className="flex gap-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-blue-500/10 flex items-center justify-center mt-0.5">
+                        <Zap size={14} className="text-blue-500" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-blue-500 uppercase tracking-wider mb-1">The Action</p>
+                        <p className="text-xs sm:text-sm text-[var(--fg-muted)] leading-relaxed">{cs.action}</p>
+                      </div>
+                    </div>
+
+                    {/* Result */}
+                    <div className="flex gap-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center mt-0.5">
+                        <CheckCircle2 size={14} className="text-emerald-500" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-1">The Result</p>
+                        <p className="text-xs sm:text-sm text-[var(--fg-muted)] leading-relaxed">{cs.result}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Metrics badges */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {cs.metrics.map((m) => (
+                      <span
+                        key={m.label}
+                        className="text-xs bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/15 px-3 py-1.5 rounded-full font-medium"
+                      >
+                        {m.label}: {m.value}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  {cs.status === "live" ? (
+                    <Button
+                      size="sm"
+                      className="w-full rounded-2xl group-hover:bg-[#FF9230]"
+                      onClick={() => setOpenModal(true)}
+                    >
+                      View Full Case Study
+                      <ExternalLink size={14} />
+                    </Button>
+                  ) : (
+                    <Button variant="outline" size="sm" className="w-full rounded-2xl" disabled>
+                      Details Coming Soon
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
 
       {/* Modal */}

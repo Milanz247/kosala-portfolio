@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0A0A0A] text-[var(--fg-muted)] border-t border-[var(--border)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Brand */}
           <div>
@@ -56,36 +56,27 @@ export default function Footer() {
                 "_blank"
               )
             }
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
+            className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-2xl transition-colors"
           >
             <MessageCircle size={16} />
             WhatsApp
           </button>
         </div>
 
-        <div className="border-t border-[var(--border)] mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-[var(--border)] mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-[var(--fg-muted)] opacity-60 text-center sm:text-left">
-            © {new Date().getFullYear()} Kosala Dananjaya. All rights reserved.
+            &copy; {new Date().getFullYear()} Kosala Dananjaya. All rights reserved.
           </p>
           <p className="text-xs text-[var(--fg-muted)] opacity-60 text-center">
-            Social Media Manager · Al Ain, UAE
+            Social Media Manager &middot; Al Ain, UAE
           </p>
           <button
             onClick={scrollToTop}
-            className="w-8 h-8 rounded-lg bg-[var(--bg-secondary)] hover:bg-[#FF7A00] flex items-center justify-center transition-colors border border-[var(--border)]"
+            className="w-9 h-9 rounded-xl glass flex items-center justify-center hover:bg-[#FF7A00] transition-colors group"
             aria-label="Back to top"
           >
-            <ArrowUp size={14} className="text-[var(--fg-muted)] group-hover:text-white" />
+            <ArrowUp size={14} className="text-[var(--fg-muted)] group-hover:text-white transition-colors" />
           </button>
-        </div>
-
-        <div className="mt-4 text-center">
-          <p className="text-[10px] text-[var(--fg-muted)] opacity-40">
-            Developed by{" "}
-            <span className="hover:text-[#FF7A00] hover:opacity-100 transition-colors cursor-default">
-              Kavindu Manahara
-            </span>
-          </p>
         </div>
       </div>
     </footer>
