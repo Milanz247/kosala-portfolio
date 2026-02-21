@@ -1,17 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kosala Dananjaya — Portfolio
 
-## Getting Started
+Personal portfolio website for Kosala Dananjaya, Meta Ads Strategist based in Al Ain, UAE.
 
-First, run the development server:
+## Stack
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- next-themes (dark mode)
+
+## Dev
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

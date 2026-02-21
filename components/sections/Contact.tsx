@@ -55,7 +55,7 @@ export default function Contact() {
               >
                 <Phone size={16} />
                 Book a Free 15-Min Audit
-                <Sparkles size={14} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+                {/* <Sparkles size={14} className="opacity-60 group-hover:opacity-100 transition-opacity" /> */}
               </a>
               <a
                 href="mailto:kosala@example.com"
@@ -75,8 +75,8 @@ export default function Contact() {
           transition={{ delay: 0.4 }}
           className="flex items-center justify-center gap-2 mt-10 text-fg-subtle text-sm"
         >
-          <MapPin size={14} />
-          <span>Based in Al Ain, UAE · Serving clients in UAE & Sri Lanka</span>
+          {/* <MapPin size={14} /> */}
+          {/* <span>Based in Al Ain, UAE · Serving clients in UAE & Sri Lanka</span> */}
         </motion.div>
       </div>
     </section>

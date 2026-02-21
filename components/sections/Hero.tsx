@@ -156,31 +156,31 @@ export default function Hero() {
               </div>
 
               {/* Hiring pill — top right */}
-              <div className="absolute -top-3 right-6 flex items-center gap-1.5 bg-[#FF7A00]/10 border border-[#FF7A00]/30 backdrop-blur-sm text-[#FF9230] text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00] animate-pulse" />
+              <div className="absolute -top-3 right-6 flex items-center gap-1.5 bg-[#FF7A00] text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg shadow-[#FF7A00]/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 Hiring Me? Let&apos;s Talk
               </div>
 
               {/* Stats badge — top left floating */}
-              <div className="absolute -left-10 top-16 bg-card-bg/90 backdrop-blur-sm border border-card-border rounded-2xl px-4 py-3 shadow-xl shadow-black/20 flex flex-col items-center">
+              <div className="absolute -left-10 top-16 bg-card-bg border border-card-border rounded-2xl px-4 py-3 shadow-2xl shadow-black/30 flex flex-col items-center" style={{backdropFilter:'blur(12px)'}}>
                 <span className="text-xl font-black text-[#FF7A00] leading-none">50+</span>
-                <span className="text-[9px] text-fg-subtle font-semibold mt-0.5 whitespace-nowrap">Happy Clients</span>
+                <span className="text-[9px] text-fg font-semibold mt-0.5 whitespace-nowrap opacity-70">Happy Clients</span>
               </div>
 
               {/* Experience badge — bottom left floating */}
-              <div className="absolute -left-10 bottom-20 bg-card-bg/90 backdrop-blur-sm border border-card-border rounded-2xl px-4 py-3 shadow-xl shadow-black/20 flex flex-col items-center">
+              <div className="absolute -left-10 bottom-20 bg-card-bg border border-card-border rounded-2xl px-4 py-3 shadow-2xl shadow-black/30 flex flex-col items-center" style={{backdropFilter:'blur(12px)'}}>
                 <span className="text-xl font-black text-[#FF7A00] leading-none">5+</span>
-                <span className="text-[9px] text-fg-subtle font-semibold mt-0.5 whitespace-nowrap">Yrs Experience</span>
+                <span className="text-[9px] text-fg font-semibold mt-0.5 whitespace-nowrap opacity-70">Yrs Experience</span>
               </div>
 
               {/* Name card — bottom overlay inside frame */}
-              <div className="absolute bottom-4 left-4 right-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl px-4 py-3 flex items-center justify-between">
+              <div className="absolute bottom-4 left-4 right-4 bg-black/65 backdrop-blur-md border border-white/15 rounded-2xl px-4 py-3 flex items-center justify-between">
                 <div>
                   <p className="text-sm font-extrabold text-white tracking-tight leading-none">Kosala Dananjaya</p>
-                  <p className="text-[10px] text-[#FF9230] font-semibold mt-0.5">Meta Ads Strategist</p>
+                  <p className="text-[10px] text-[#FFB366] font-semibold mt-0.5">Meta Ads Strategist</p>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-amber-400 font-bold">
-                  <span className="text-amber-400">★</span> 5.0
+                <div className="flex items-center gap-1 text-[10px] text-amber-300 font-bold">
+                  <span className="text-amber-300">★</span> 5.0
                 </div>
               </div>
 
