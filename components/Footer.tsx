@@ -37,10 +37,10 @@ const InstagramIcon = () => (
 );
 
 const socialLinks = [
-  { Icon: WhatsAppIcon, href: "https://wa.me/94XXXXXXXXX?text=Hi Kosala, I'd like to discuss a project.", label: "WhatsApp", brandColor: "#25D366" },
-  { Icon: MailIcon, href: "mailto:kosala@example.com", label: "Email", brandColor: "#EA4335" },
-  { Icon: LinkedInIcon, href: "https://linkedin.com/in/kosala", label: "LinkedIn", brandColor: "#0A66C2" },
-  { Icon: InstagramIcon, href: "https://instagram.com/kosalasocialmedia", label: "Instagram", brandColor: "#E1306C" },
+  { Icon: WhatsAppIcon, href: "https://wa.me/971545030693?text=Hi Kosala, I'd like to discuss a project.", label: "WhatsApp", brandColor: "#25D366" },
+  { Icon: MailIcon, href: "mailto:dananjayaherath077@gmail.com", label: "Email", brandColor: "#EA4335" },
+  { Icon: LinkedInIcon, href: "https://www.linkedin.com/in/kosala-dananjaya-9aa326285/", label: "LinkedIn", brandColor: "#0A66C2" },
+  { Icon: InstagramIcon, href: "https://www.instagram.com/kosala.social?igsh=MWQ5aXZpcnRlenJ1Zw%3D%3D&utm_source=qr", label: "Instagram", brandColor: "#E1306C" },
 ];
 
 export default function Footer() {
@@ -123,19 +123,19 @@ export default function Footer() {
               through data-driven Meta advertising and structured content marketing.
             </p>
             <div className="flex flex-col gap-2">
-              <a href="https://wa.me/94XXXXXXXXX" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/971545030693" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-xs text-fg-subtle hover:text-[#FF7A00] transition-colors group w-fit">
                 <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center group-hover:border-[#FF7A00]/30 transition-colors">
                   <Phone size={12} className="group-hover:text-[#FF7A00] transition-colors" />
                 </div>
-                +94 XX XXX XXXX
+                +971 54 503 0693
               </a>
-              <a href="mailto:kosala@example.com"
+              <a href="mailto:dananjayaherath077@gmail.com"
                 className="flex items-center gap-2.5 text-xs text-fg-subtle hover:text-[#FF7A00] transition-colors group w-fit">
                 <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center group-hover:border-[#FF7A00]/30 transition-colors">
                   <Mail size={12} className="group-hover:text-[#FF7A00] transition-colors" />
                 </div>
-                kosala@example.com
+                dananjayaherath077@gmail.com
               </a>
               <div className="flex items-center gap-2.5 text-xs text-fg-subtle">
                 <div className="w-7 h-7 rounded-lg bg-icon-bg border border-card-border flex items-center justify-center">

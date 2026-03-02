@@ -109,7 +109,7 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div {...fadeUp(0.35)} className="flex flex-col sm:flex-row gap-3">
               <a
-                href="https://wa.me/94XXXXXXXXX?text=Hi Kosala, I'd like to discuss a project."
+                href="https://wa.me/971545030693?text=Hi Kosala, I'd like to discuss a project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 h-12 sm:h-13 px-6 sm:px-8 text-sm font-bold rounded-2xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-xl shadow-[#FF7A00]/30 hover:shadow-[#FF7A00]/50 transition-all duration-300 active:scale-95 w-full sm:w-auto"

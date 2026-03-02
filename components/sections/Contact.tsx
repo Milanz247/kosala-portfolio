@@ -48,7 +48,7 @@ export default function Contact() {
 
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
               <a
-                href="https://wa.me/94XXXXXXXXX?text=Hi Kosala, I'd like to book a free 15-min audit."
+                href="https://wa.me/971545030693?text=Hi Kosala, I'd like to book a free 15-min audit."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 h-13 sm:h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold rounded-3xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-xl shadow-[#FF7A00]/25 hover:shadow-[#FF7A00]/40 transition-all duration-300 active:scale-95 w-full sm:w-auto"
@@ -58,7 +58,7 @@ export default function Contact() {
                 {/* <Sparkles size={14} className="opacity-60 group-hover:opacity-100 transition-opacity" /> */}
               </a>
               <a
-                href="mailto:kosala@example.com"
+                href="mailto:dananjayaherath077@gmail.com"
                 className="inline-flex items-center gap-2 h-13 sm:h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold rounded-3xl border border-card-border text-fg-muted hover:text-fg hover:border-card-border hover:bg-card-bg-hover transition-all duration-300 active:scale-95 w-full sm:w-auto"
               >
                 <Mail size={16} />

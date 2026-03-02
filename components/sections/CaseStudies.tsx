@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Target,
@@ -13,6 +14,11 @@ import {
   ExternalLink,
   ChevronRight,
   ImageOff,
+  MessageCircle,
+  DollarSign,
+  Zap,
+  ZoomIn,
+  ChevronLeft,
 } from "lucide-react";
 
 /* ─── Case Study Data ─────────────────────────────────── */
@@ -79,6 +85,89 @@ const clearSkinCaseStudy = {
   },
 };
 
+/* ─── Layan Wellness Data ─────────────────────────────── */
+const layanWellnessCaseStudy = {
+  id: "layan-wellness",
+  number: "02",
+  client: "Layan Wellness UAE",
+  tag: "Wellness Brand",
+  type: "WhatsApp Lead Generation Campaign",
+  status: "live",
+  flag: "🇦🇪",
+  overview:
+    "Layan Wellness is a UAE-based wellness brand offering Energy Healing Workshops, Pregnancy Massage Services, and Sound Meditation Sessions. The goal was to generate qualified WhatsApp inquiries for bookings and event participation using Meta Ads.",
+  objectives: [
+    "Generate consistent WhatsApp messaging conversations",
+    "Keep cost per messaging conversation under AED 12",
+    "Test multiple service offers to identify highest-performing campaigns",
+    "Optimize ad spend across different wellness services",
+  ],
+  strategy: [
+    {
+      title: "Multi-Service Campaign Structure",
+      description:
+        "Instead of promoting a single service, separate campaigns were launched for Energy Healing Workshop, Pregnancy Massage, and Sound Meditation — each with its own creative angle, audience targeting, and ad copy.",
+    },
+    {
+      title: "WhatsApp-Focused Funnel",
+      description:
+        "Campaign objective set to Messaging Conversations with direct Click-to-WhatsApp setup, clear call-to-action, benefit-driven messaging, and continuous creative testing.",
+    },
+    {
+      title: "Budget & Optimization Approach",
+      description:
+        "Daily budgets between AED 60–85. A/B testing multiple ad copies and creatives, monitoring cost per messaging conversation, scaling high-performing campaigns, and pausing underperforming variations.",
+    },
+    {
+      title: "Micro Test Campaigns",
+      description:
+        "Small-budget test campaigns used to identify winning creatives and copy combinations, achieving costs as low as AED 5.10 per messaging conversation before scaling.",
+    },
+  ],
+  campaigns: [
+    {
+      name: "Energy Healing Workshop",
+      conversations: 11,
+      cpc: "AED 8.84",
+      spend: "AED 97.23",
+    },
+    {
+      name: "Pregnancy Massage",
+      conversations: 11,
+      cpc: "AED 8.32",
+      spend: "AED 91.54",
+    },
+    {
+      name: "Sound Meditation",
+      conversations: 18,
+      cpc: "AED 10.23",
+      spend: "AED 184.22",
+    },
+    {
+      name: "Micro Test Campaigns",
+      conversations: null,
+      cpc: "From AED 5.10",
+      spend: "Low budget",
+    },
+  ],
+  summary: [
+    { metric: "40+", note: "WhatsApp Conversations" },
+    { metric: "AED 8–10", note: "Avg. Cost per Conversation" },
+    { metric: "AED 12", note: "Target CPR — Consistently Met" },
+    { metric: "3 Services", note: "Tested & Optimised" },
+  ],
+  tools: ["Meta Ads Manager", "Click-to-WhatsApp", "A/B Testing", "Meta Business Suite"],
+  images: [
+    "/case_study/layan_wellness/1.jpeg",
+    "/case_study/layan_wellness/2.jpeg",
+    "/case_study/layan_wellness/3.jpeg",
+    "/case_study/layan_wellness/4.jpeg",
+    "/case_study/layan_wellness/5.jpeg",
+    "/case_study/layan_wellness/6.jpeg",
+    "/case_study/layan_wellness/7.jpeg",
+  ],
+};
+
 const caseStudies = [
   {
     id: "clear-skin-panadura",
@@ -92,8 +181,19 @@ const caseStudies = [
     status: "live",
   },
   {
-    id: "braces-dental",
+    id: "layan-wellness",
     number: "02",
+    client: "Layan Wellness UAE 🇦🇪",
+    tag: "Wellness Brand",
+    type: "WhatsApp Lead Generation — Meta Ads",
+    summary:
+      "Generated 40+ qualified WhatsApp messaging conversations across three wellness services in the UAE market, maintaining an average cost per conversation of AED 8–10 — well below the AED 12 target.",
+    results: ["40+ WhatsApp conversations", "AED 8–10 avg. CPR", "3 services tested & scaled"],
+    status: "live",
+  },
+  {
+    id: "braces-dental",
+    number: "03",
     client: "Braces & Specialist Dental Clinic",
     tag: "Dental Clinic",
     type: "Social Media Management & Content Strategy",
@@ -124,7 +224,255 @@ function PlaceholderBox({ label }: { label: string }) {
   );
 }
 
-/* ─── Modal ──────────────────────────────────────────────── */
+/* ─── Layan Wellness Modal ───────────────────────────────── */
+function LayanWellnessModal({ onClose }: { onClose: () => void }) {
+  const cs = layanWellnessCaseStudy;
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const openLightbox = (i: number) => setLightbox(i);
+  const closeLightbox = () => setLightbox(null);
+  const prevImage = () => setLightbox((p) => (p !== null ? (p - 1 + cs.images.length) % cs.images.length : 0));
+  const nextImage = () => setLightbox((p) => (p !== null ? (p + 1) % cs.images.length : 0));
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 overflow-y-auto"
+    >
+      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative min-h-screen flex items-start justify-center p-3 sm:p-4 pt-4 sm:pt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 30 }}
+          transition={{ duration: 0.3 }}
+          className="relative w-full max-w-4xl bg-modal-bg rounded-2xl sm:rounded-3xl shadow-2xl shadow-black/50 border border-card-border overflow-hidden"
+        >
+          {/* Header */}
+          <div className="relative bg-gradient-to-br from-[#FF7A00] to-[#CC5500] p-5 sm:p-8 text-white overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+            <div className="relative flex items-start justify-between gap-3">
+              <div>
+                <div className="text-white/70 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2">Case Study {cs.number}</div>
+                <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight mb-1">{cs.flag} {cs.client}</h2>
+                <p className="text-white/70 text-xs sm:text-sm">{cs.type}</p>
+              </div>
+              <button onClick={onClose} className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
+                <X size={16} className="sm:w-[18px] sm:h-[18px]" />
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
+              {cs.tools.map((t) => (
+                <span key={t} className="text-[10px] sm:text-xs bg-white/20 border border-white/30 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-medium">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Body */}
+          <div className="p-5 sm:p-8 space-y-6 sm:space-y-10">
+
+            {/* Overview */}
+            <div>
+              <SectionLabel icon={Lightbulb} label="Overview" />
+              <p className="text-fg-muted leading-relaxed text-xs sm:text-base">{cs.overview}</p>
+            </div>
+
+            {/* Objectives */}
+            <div>
+              <SectionLabel icon={Target} label="Objectives" />
+              <ul className="space-y-2">
+                {cs.objectives.map((obj, i) => (
+                  <li key={i} className="flex items-start gap-2 sm:gap-3">
+                    <span className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] text-[10px] sm:text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                    <span className="text-fg-muted text-xs sm:text-sm leading-relaxed">{obj}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Strategy */}
+            <div>
+              <SectionLabel icon={Lightbulb} label="Strategy" />
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                {cs.strategy.map((s) => (
+                  <div key={s.title} className="bg-card-bg rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-card-border">
+                    <h4 className="font-bold text-fg text-xs sm:text-sm mb-1.5 sm:mb-2">{s.title}</h4>
+                    <p className="text-fg-subtle text-[11px] sm:text-xs leading-relaxed">{s.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Campaign Results */}
+            <div>
+              <SectionLabel icon={BarChart3} label="Campaign Results" />
+              <div className="space-y-3">
+                {cs.campaigns.map((c) => (
+                  <div key={c.name} className="bg-card-bg border border-card-border rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div className="flex-1">
+                      <p className="font-bold text-fg text-xs sm:text-sm">{c.name}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 sm:gap-4">
+                      {c.conversations !== null && (
+                        <div className="flex items-center gap-1.5">
+                          <MessageCircle size={13} className="text-[#FF7A00]" />
+                          <span className="text-xs font-semibold text-fg">{c.conversations}</span>
+                          <span className="text-[10px] text-fg-subtle">conversations</span>
+                        </div>
+                      )}
+                      <div className="flex items-center gap-1.5">
+                        <Zap size={13} className="text-[#FF7A00]" />
+                        <span className="text-xs font-semibold text-fg">{c.cpc}</span>
+                        <span className="text-[10px] text-fg-subtle">per conv.</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <DollarSign size={13} className="text-[#FF7A00]" />
+                        <span className="text-xs font-semibold text-fg">{c.spend}</span>
+                        <span className="text-[10px] text-fg-subtle">spend</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Overall Summary */}
+            <div>
+              <SectionLabel icon={TrendingUp} label="Overall Performance" />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                {cs.summary.map((r) => (
+                  <div key={r.metric} className="bg-[#FF7A00]/[0.04] border border-[#FF7A00]/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center">
+                    <div className="text-[#FF7A00] font-extrabold text-xs sm:text-sm mb-0.5 sm:mb-1">{r.metric}</div>
+                    <div className="text-fg-subtle text-[10px] sm:text-xs">{r.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Campaign Screenshots */}
+            <div>
+              <SectionLabel icon={Settings2} label="Campaign Screenshots" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                {cs.images.map((src, i) => (
+                  <button
+                    key={src}
+                    onClick={() => openLightbox(i)}
+                    className="group relative rounded-xl sm:rounded-2xl overflow-hidden border border-card-border bg-card-bg aspect-video cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-[#FF7A00]/50"
+                  >
+                    <Image
+                      src={src}
+                      alt={`Layan Wellness campaign screenshot ${i + 1}`}
+                      fill
+                      className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <ZoomIn size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Lightbox */}
+            <AnimatePresence>
+              {lightbox !== null && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+                  onClick={closeLightbox}
+                >
+                  <div className="absolute inset-0 bg-black/90 backdrop-blur-md" />
+
+                  {/* Close */}
+                  <button
+                    onClick={closeLightbox}
+                    className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <X size={18} className="text-white" />
+                  </button>
+
+                  {/* Prev */}
+                  <button
+                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                    className="absolute left-3 sm:left-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <ChevronLeft size={20} className="text-white" />
+                  </button>
+
+                  {/* Next */}
+                  <button
+                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                    className="absolute right-3 sm:right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <ChevronRight size={20} className="text-white" />
+                  </button>
+
+                  {/* Image */}
+                  <motion.div
+                    key={lightbox}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.92 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative z-10 w-full max-w-4xl max-h-[85vh] aspect-video"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src={cs.images[lightbox]}
+                      alt={`Screenshot ${lightbox + 1}`}
+                      fill
+                      className="object-contain rounded-xl"
+                      sizes="100vw"
+                      priority
+                    />
+                  </motion.div>
+
+                  {/* Counter */}
+                  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5">
+                    {cs.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => { e.stopPropagation(); setLightbox(idx); }}
+                        className={`w-1.5 h-1.5 rounded-full transition-all ${
+                          idx === lightbox ? "bg-white w-4" : "bg-white/40"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Tools */}
+            <div>
+              <SectionLabel icon={Wrench} label="Tools Used" />
+              <div className="flex flex-wrap gap-2">
+                {cs.tools.map((tool) => (
+                  <span key={tool} className="text-sm bg-icon-bg text-fg-muted border border-card-border px-3 py-1.5 rounded-xl font-medium">{tool}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="border-t border-card-border p-4 sm:p-6 flex flex-wrap justify-between items-center gap-3">
+            <p className="text-xs text-fg-subtle flex-1 min-w-0">Details summarized for confidentiality.</p>
+            <button onClick={onClose} className="inline-flex items-center gap-2 h-9 px-5 text-xs font-semibold rounded-full border border-card-border text-fg-muted hover:text-fg hover:border-card-border transition-all">
+              Close
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─── Clear Skin Modal ───────────────────────────────────── */
 function CaseStudyModal({ onClose }: { onClose: () => void }) {
   const cs = clearSkinCaseStudy;
   return (
@@ -268,7 +616,7 @@ function CaseStudyModal({ onClose }: { onClose: () => void }) {
 
 /* ─── Main Section ────────────────────────────────────── */
 export default function CaseStudies() {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState<string | null>(null);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -358,7 +706,7 @@ export default function CaseStudies() {
 
                 {cs.status === "live" ? (
                   <button
-                    onClick={() => setOpenModal(true)}
+                    onClick={() => setOpenModal(cs.id)}
                     className="w-full inline-flex items-center justify-center gap-2 h-10 sm:h-11 text-xs sm:text-sm font-semibold rounded-xl sm:rounded-2xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 transition-all duration-300 active:scale-95"
                   >
                     View Full Case Study
@@ -379,7 +727,8 @@ export default function CaseStudies() {
       </div>
 
       <AnimatePresence>
-        {openModal && <CaseStudyModal onClose={() => setOpenModal(false)} />}
+        {openModal === "clear-skin-panadura" && <CaseStudyModal onClose={() => setOpenModal(null)} />}
+        {openModal === "layan-wellness" && <LayanWellnessModal onClose={() => setOpenModal(null)} />}
       </AnimatePresence>
     </section>
   );

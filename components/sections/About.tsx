@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Camera } from "lucide-react";
+import { Camera, Linkedin, Instagram } from "lucide-react";
 
 export default function About() {
   const ref = useRef(null);
@@ -58,20 +58,26 @@ export default function About() {
               </p>
               
               <p className="text-fg-muted text-sm sm:text-base leading-relaxed mb-4">
-                I focus on combining content strategy with performance marketing
-                to help businesses increase visibility and generate inquiries
-                through social media platforms.
+                I specialize in combining content strategy with performance marketing
+                to help service-based businesses generate measurable growth through
+                Meta advertising and structured social media systems.
               </p>
-              
+
+              <p className="text-fg-subtle text-sm sm:text-base leading-relaxed mb-4">
+                With experience across{" "}
+                <span className="text-fg font-medium">wellness, dental, skincare, and local service brands</span>{" "}
+                in the UAE and Sri Lanka, I focus on building campaigns that don't just
+                increase visibility — but drive qualified inquiries and real customer action.
+              </p>
+
               <p className="text-fg-subtle text-sm sm:text-base leading-relaxed mb-6">
-                Experience working with{" "}
-                <span className="text-fg font-medium">dental and skincare clinics</span>{" "}
-                and local businesses — improving engagement, awareness, and customer
-                inquiries through structured advertising strategies.
+                My approach is centered around strategic testing,{" "}
+                <span className="text-fg font-medium">cost-per-lead optimization</span>, and clear
+                performance reporting to ensure every campaign is aligned with business goals.
               </p>
 
               {/* Tags */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-2">
+              <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-6">
                 {["Meta Ads", "Social Media", "Content Strategy", "Al Ain, UAE", "Sri Lanka"].map((tag) => (
                   <span
                     key={tag}
@@ -80,6 +86,28 @@ export default function About() {
                     {tag}
                   </span>
                 ))}
+              </div>
+
+              {/* Social Links */}
+              <div className="flex justify-center md:justify-start gap-3">
+                <a
+                  href="https://www.linkedin.com/in/kosala-dananjaya-9aa326285/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 h-9 px-4 text-xs font-semibold rounded-full border border-card-border text-fg-muted hover:text-[#0A66C2] hover:border-[#0A66C2]/40 hover:bg-[#0A66C2]/[0.06] transition-all duration-300"
+                >
+                  <Linkedin size={14} />
+                  LinkedIn
+                </a>
+                <a
+                  href="https://www.instagram.com/kosala.social?igsh=MWQ5aXZpcnRlenJ1Zw%3D%3D&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 h-9 px-4 text-xs font-semibold rounded-full border border-card-border text-fg-muted hover:text-[#E1306C] hover:border-[#E1306C]/40 hover:bg-[#E1306C]/[0.06] transition-all duration-300"
+                >
+                  <Instagram size={14} />
+                  Instagram
+                </a>
               </div>
             </div>
           </div>
