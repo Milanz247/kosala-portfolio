@@ -57,12 +57,12 @@ export default function PainPoints() {
             Sound Familiar?
           </span>
           <h2 className="heading text-2xl sm:text-4xl md:text-5xl text-fg mb-3 sm:mb-4">
-            Sound Like{" "}
-            <span className="gradient-text">Last Month?</span>
+            These Problems Are{" "}
+            <span className="gradient-text">Costing You Money</span>
           </h2>
           <p className="text-fg-subtle text-sm sm:text-base max-w-xl mx-auto leading-relaxed px-2">
-            I&apos;ve had this exact conversation with dozens of business owners.
-            It usually starts with: &ldquo;I tried boosting a post but nothing happened.&rdquo;
+            If any of these sound like your business, you&apos;re not alone — and
+            there&apos;s a better way.
           </p>
         </motion.div>
 

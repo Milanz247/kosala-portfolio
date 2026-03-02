@@ -53,13 +53,11 @@ export default function About() {
               </p>
               
               <p className="text-fg-muted text-sm sm:text-base leading-relaxed mb-4">
-                I grew up in Sri Lanka watching businesses run on word of mouth.
-                The sign above the door. A neighbour recommending a neighbour.
-                There was nothing wrong with that — until the world moved.
-                My first properly built Meta campaign was for a small skincare clinic
-                in Panadura. Their phone started ringing within a week.
-                I&apos;ve been doing this ever since, and ended up in Al Ain, UAE,
-                running campaigns for clinics and service brands across both markets.
+                I got into Meta Ads because I watched small business owners burn money
+                boosting posts with zero results — and I knew there was a better way.
+                Since then I&apos;ve helped wellness brands, dental clinics, and skincare
+                businesses across UAE and Sri Lanka get consistent, qualified WhatsApp
+                inquiries through structured Meta advertising.
               </p>
 
               <p className="text-fg-subtle text-sm sm:text-base leading-relaxed mb-4">
@@ -70,11 +68,10 @@ export default function About() {
               </p>
 
               <p className="text-fg-subtle text-sm sm:text-base leading-relaxed mb-6">
-                The benchmark I hold myself to:{" "}
-                <span className="text-fg font-medium">your cost per conversation should make
-                the ad spend feel obvious</span>. If it doesn&apos;t, we fix it.
-                Every campaign comes with a real monthly breakdown — what we spent,
-                what came back, and exactly what I&apos;m changing next month.
+                My focus is simple:{" "}
+                <span className="text-fg font-medium">lower cost per lead, more qualified inquiries,
+                and campaigns you can actually understand</span>{" "}
+                through clear monthly reporting.
               </p>
 
               {/* Tags */}

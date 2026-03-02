@@ -60,8 +60,8 @@ export default function Process() {
             <span className="gradient-text">Consistent Growth</span>
           </h2>
           <p className="text-fg-subtle text-sm sm:text-base max-w-xl mx-auto leading-relaxed px-2">
-            How every client engagement works — from the first call
-            to a campaign that actually earns its budget.
+            A proven four-step framework that turns ad spend into measurable
+            revenue.
           </p>
         </motion.div>
 
