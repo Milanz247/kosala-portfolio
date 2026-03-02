@@ -13,7 +13,6 @@ import {
   X,
   ExternalLink,
   ChevronRight,
-  ImageOff,
   MessageCircle,
   DollarSign,
   Zap,
@@ -78,11 +77,13 @@ const clearSkinCaseStudy = {
     { metric: "Ad Campaigns", value: "Lower CPR", note: "cost per result through optimization" },
   ],
   tools: ["Meta Ads Manager", "Meta Business Suite", "Canva", "CapCut", "WhatsApp Business"],
-  placeholders: {
-    ads: ["Ads Manager Screenshot — Campaign Overview", "Ads Manager Screenshot — Audience Insights"],
-    reels: ["Reel Thumbnail 01 — Service Highlight", "Reel Thumbnail 02 — Before & After"],
-    posts: ["Post Sample — Educational Content", "Post Sample — Promotional Offer"],
-  },
+  images: [
+    "/case_study/clear_skin_panadura/1.jpeg",
+    "/case_study/clear_skin_panadura/2.jpeg",
+    "/case_study/clear_skin_panadura/3.jpeg",
+    "/case_study/clear_skin_panadura/4.jpeg",
+    "/case_study/clear_skin_panadura/5.jpeg",
+  ],
 };
 
 /* ─── Layan Wellness Data ─────────────────────────────── */
@@ -214,15 +215,6 @@ function SectionLabel({ icon: Icon, label }: { icon: React.ElementType; label: s
   );
 }
 
-/* ─── Placeholder Box ────────────────────────────────────── */
-function PlaceholderBox({ label }: { label: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center gap-2 bg-card-bg border-2 border-dashed border-card-border rounded-2xl p-6 text-center">
-      <ImageOff size={20} className="text-fg-subtle" />
-      <span className="text-xs text-fg-subtle font-medium">{label}</span>
-    </div>
-  );
-}
 
 /* ─── Layan Wellness Modal ───────────────────────────────── */
 function LayanWellnessModal({ onClose }: { onClose: () => void }) {
@@ -475,6 +467,13 @@ function LayanWellnessModal({ onClose }: { onClose: () => void }) {
 /* ─── Clear Skin Modal ───────────────────────────────────── */
 function CaseStudyModal({ onClose }: { onClose: () => void }) {
   const cs = clearSkinCaseStudy;
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const openLightbox = (i: number) => setLightbox(i);
+  const closeLightbox = () => setLightbox(null);
+  const prevImage = () => setLightbox((p) => (p !== null ? (p - 1 + cs.images.length) % cs.images.length : 0));
+  const nextImage = () => setLightbox((p) => (p !== null ? (p + 1) % cs.images.length : 0));
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -574,22 +573,90 @@ function CaseStudyModal({ onClose }: { onClose: () => void }) {
             </div>
 
             <div>
-              <SectionLabel icon={ImageOff} label="Campaign Visuals (Placeholders)" />
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs text-zinc-500 font-semibold mb-2 uppercase tracking-wider">Ads Manager Screenshots</p>
-                  <div className="grid sm:grid-cols-2 gap-3">{cs.placeholders.ads.map((p) => <PlaceholderBox key={p} label={p} />)}</div>
-                </div>
-                <div>
-                  <p className="text-xs text-zinc-500 font-semibold mb-2 uppercase tracking-wider">Reel Thumbnails</p>
-                  <div className="grid sm:grid-cols-2 gap-3">{cs.placeholders.reels.map((p) => <PlaceholderBox key={p} label={p} />)}</div>
-                </div>
-                <div>
-                  <p className="text-xs text-zinc-500 font-semibold mb-2 uppercase tracking-wider">Post Samples</p>
-                  <div className="grid sm:grid-cols-2 gap-3">{cs.placeholders.posts.map((p) => <PlaceholderBox key={p} label={p} />)}</div>
-                </div>
+              <SectionLabel icon={Settings2} label="Campaign Screenshots" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                {cs.images.map((src, i) => (
+                  <button
+                    key={src}
+                    onClick={() => openLightbox(i)}
+                    className="group relative rounded-xl sm:rounded-2xl overflow-hidden border border-card-border bg-card-bg aspect-video cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-[#FF7A00]/50"
+                  >
+                    <Image
+                      src={src}
+                      alt={`Clear Skin campaign screenshot ${i + 1}`}
+                      fill
+                      className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <ZoomIn size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" />
+                    </div>
+                  </button>
+                ))}
               </div>
             </div>
+
+            {/* Lightbox */}
+            <AnimatePresence>
+              {lightbox !== null && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+                  onClick={closeLightbox}
+                >
+                  <div className="absolute inset-0 bg-black/90 backdrop-blur-md" />
+                  <button
+                    onClick={closeLightbox}
+                    className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <X size={18} className="text-white" />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                    className="absolute left-3 sm:left-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <ChevronLeft size={20} className="text-white" />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                    className="absolute right-3 sm:right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <ChevronRight size={20} className="text-white" />
+                  </button>
+                  <motion.div
+                    key={lightbox}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.92 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative z-10 w-full max-w-4xl max-h-[85vh] aspect-video"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src={cs.images[lightbox]}
+                      alt={`Screenshot ${lightbox + 1}`}
+                      fill
+                      className="object-contain rounded-xl"
+                      sizes="100vw"
+                      priority
+                    />
+                  </motion.div>
+                  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5">
+                    {cs.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => { e.stopPropagation(); setLightbox(idx); }}
+                        className={`w-1.5 h-1.5 rounded-full transition-all ${
+                          idx === lightbox ? "bg-white w-4" : "bg-white/40"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <div>
               <SectionLabel icon={Wrench} label="Tools Used" />
