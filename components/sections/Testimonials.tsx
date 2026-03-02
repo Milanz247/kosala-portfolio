@@ -7,7 +7,7 @@ import { Quote } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "We were boosting posts randomly for months with nothing to show for it. Kosala set up a proper WhatsApp campaign and within two weeks we had real inquiries coming in — people actually booking sessions. The cost per conversation was way lower than we expected.",
+      "Honestly, we’d tried boosting posts before and got nothing. Kosala completely changed how we were doing it. Two weeks in, we actually had to ask him to slow down the ads — we couldn’t keep up with the inquiries. The cost per conversation was nothing like what we’d been spending before.",
     name: "Layan Wellness Team",
     role: "Wellness Brand",
     location: "UAE 🇦🇪",
@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     quote:
-      "Our clinic had almost no social media presence. Kosala built everything from scratch — content plan, ad setup, the whole thing. We started getting consistent WhatsApp inquiries from local customers within the first month. It made a real difference to the business.",
+      "Before we started, our Instagram was basically empty. Kosala put together a content plan, handled the posting, and set up the ads. That first month, we had more WhatsApp inquiries from local people than the previous three months combined.",
     name: "Clear Skin Panadura",
     role: "Skincare Clinic",
     location: "Sri Lanka 🇱🇰",
@@ -27,7 +27,7 @@ const testimonials = [
   },
   {
     quote:
-      "What I appreciated most was the transparency. I could see exactly where the budget was going and what was working. Other agencies just sent me a PDF at the end of the month. Kosala actually explained the numbers and adjusted the strategy based on what we saw.",
+      "I’d worked with an agency before. They sent me a report every month, I had no idea what it meant, and I just kept paying. Kosala actually walks you through the numbers. When something wasn’t working, he told me first and explained exactly what he was changing. That kind of honesty is rare.",
     name: "Amani Home Services",
     role: "Home Maintenance Brand",
     location: "Dubai, UAE 🇦🇪",

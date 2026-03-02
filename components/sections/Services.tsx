@@ -14,7 +14,7 @@ const services = [
     icon: Megaphone,
     title: "Meta Ads (Lead Generation)",
     description:
-      "Data-driven paid advertising campaigns built to generate qualified WhatsApp inquiries and paying customers — not vanity metrics.",
+      "I build campaigns around one outcome: your phone ringing with people who actually want to book. Not reach numbers. Not likes. Bookings. I've run this for wellness centres, dental clinics, and skincare brands — and I keep optimizing until the cost per conversation makes the spend feel obvious.",
     outcome: "You wake up to WhatsApp messages, not silence.",
     features: [
       "Campaign setup, A/B testing & optimization",
@@ -28,7 +28,7 @@ const services = [
     icon: LayoutGrid,
     title: "Social Media Management",
     description:
-      "End-to-end management of your social presence with a consistent, on-brand strategy that drives real engagement.",
+      "Your clinic needs to look alive online — even on the days you're fully booked. I handle the content plan, calendar, editing, and scheduling so your Instagram and Facebook stay professional and active without you having to think about it.",
     outcome: "Your brand looks active and professional — even when you're busy with clients.",
     features: [
       "Content planning & monthly calendar",
@@ -42,7 +42,7 @@ const services = [
     icon: BarChart3,
     title: "ROI Reporting & Strategy",
     description:
-      "Crystal-clear reporting so you know exactly what every dirham is doing. No fluff, just numbers that matter.",
+      "Most clients get a PDF at month-end and have no idea what they're looking at. Every month you get a real breakdown — what we spent, what it generated, what I'm changing and why. You'll never wonder if your money was wasted. You'll know.",
     outcome: "You'll always know which AED is working and which to cut.",
     features: [
       "Monthly performance dashboards",
@@ -72,11 +72,10 @@ export default function Services() {
             Services
           </span>
           <h2 className="heading text-2xl sm:text-4xl md:text-5xl text-fg mb-3 sm:mb-4">
-            How I <span className="gradient-text">Help Your Business</span> Grow
+            Three things. <span className="gradient-text">One goal.</span>
           </h2>
           <p className="text-fg-subtle text-sm sm:text-base max-w-xl mx-auto leading-relaxed px-2">
-            Focused services that work together to convert followers into
-            paying customers.
+            Everything I do is built around a single question: did your phone ring because of this?
           </p>
         </motion.div>
 

@@ -159,6 +159,7 @@ body::before {
 
 /* ── Heading style utility ───────────────────────────────────────── */
 .heading {
+  font-family: var(--font-syne), var(--font-inter), sans-serif;
   letter-spacing: -0.04em;
   line-height: 1.05;
   font-weight: 800;

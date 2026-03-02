@@ -10,6 +10,14 @@ const faqs = [
     a: "Most clients start seeing WhatsApp inquiries within the first 7–14 days of a campaign going live. Full optimization — where costs drop and volume increases — typically happens over 30–60 days as we test and refine what works for your specific audience.",
   },
   {
+    q: "What does working with you cost?",
+    a: "Campaigns start at AED 1,500/month (around $400 USD) plus your ad spend. Social media management is quoted based on scope. I'm transparent about pricing from the first call — if your budget doesn't match what the goal actually needs, I'll tell you that before we start, not after.",
+  },
+  {
+    q: "You're based in Al Ain — does location matter?",
+    a: "For most of what I do, not at all. Calls happen via WhatsApp or Google Meet and reporting is shared digitally. That said, being based in the UAE means I understand local market behaviour and what actually resonates for UAE clinics and service businesses. The Sri Lanka experience means I run dual-market campaigns without needing anyone to explain the cultural nuance. Most agencies in Dubai don't have both.",
+  },
+  {
     q: "Do you work with small budgets?",
     a: "Yes. I've run effective campaigns with daily budgets as low as AED 60–85. The key isn't the size of the budget — it's the strategy behind it. I'll tell you honestly upfront what's realistic with your budget before we start.",
   },

@@ -94,10 +94,11 @@ export default function Hero() {
 
             {/* Description */}
             <motion.p {...fadeUp(0.22)} className="text-sm sm:text-base text-fg-subtle leading-relaxed mb-8 max-w-lg">
-              I help clinics and service brands in{" "}
-              <span className="text-fg font-medium">UAE &amp; Sri Lanka</span> get consistent
-              WhatsApp booking inquiries through Meta Ads — without wasting budget
-              on boosts that go nowhere.
+              Most businesses don&apos;t have an ads problem. They have a{" "}
+              <span className="text-fg font-medium">&ldquo;nobody sees them&rdquo;</span>{" "}problem.
+              {" "}I fix that. I run Meta campaigns for clinics and service brands in the{" "}
+              <span className="text-fg font-medium">UAE &amp; Sri Lanka</span> — built around
+              one outcome: real people messaging you to book.
             </motion.p>
 
             {/* Service tags */}
@@ -119,13 +120,13 @@ export default function Hero() {
                 className="group inline-flex items-center justify-center gap-2 h-12 sm:h-13 px-6 sm:px-8 text-sm font-bold rounded-2xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-xl shadow-[#FF7A00]/30 hover:shadow-[#FF7A00]/50 transition-all duration-300 active:scale-95 w-full sm:w-auto"
               >
                 <Phone size={15} />
-                Let&apos;s Work Together
+                Tell Me About Your Business
               </a>
               <button
                 onClick={() => scrollTo("#case-studies")}
                 className="group inline-flex items-center justify-center gap-2 h-12 sm:h-13 px-6 sm:px-8 text-sm font-bold rounded-2xl border border-card-border text-fg-muted hover:text-fg hover:bg-card-bg-hover transition-all duration-300 active:scale-95 w-full sm:w-auto"
               >
-                View My Work
+                See What Happened
                 <ChevronRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </button>
             </motion.div>

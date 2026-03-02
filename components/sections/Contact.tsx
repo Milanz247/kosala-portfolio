@@ -35,15 +35,16 @@ export default function Contact() {
             </span>
 
             <h2 className="heading text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-fg mb-3 sm:mb-6">
-              Let&apos;s Talk for 15 Minutes.{" "}
+              Got 15 Minutes?{" "}
               <br className="hidden sm:block" />
-              <span className="gradient-text">No Pitch. No Pressure.</span>
+              <span className="gradient-text">Let’s Actually Talk.</span>
             </h2>
 
             <p className="text-fg-subtle text-sm sm:text-base max-w-lg mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
-              Tell me about your business and what you&apos;re struggling with.
-              Whether it&apos;s Meta ads, social media, or just figuring out where
-              to start — I&apos;ll give you honest advice, for free.
+              Tell me about your business, what you&apos;ve already tried, and what
+              you&apos;re trying to fix. I&apos;ll give you honest feedback — no slides,
+              no pitch, just a straight conversation. If I&apos;m not the right
+              person for you, I&apos;ll tell you that too.
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
@@ -54,7 +55,7 @@ export default function Contact() {
                 className="group inline-flex items-center gap-2.5 h-13 sm:h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold rounded-3xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-xl shadow-[#FF7A00]/25 hover:shadow-[#FF7A00]/40 transition-all duration-300 active:scale-95 w-full sm:w-auto"
               >
                 <Phone size={16} />
-                Book a Free 15-Min Audit
+                Talk to Me — It’s Free, 15 Minutes
               </a>
               {/* ── Replace the href below with your real Calendly booking URL ── */}
               <a
@@ -64,14 +65,14 @@ export default function Contact() {
                 className="inline-flex items-center gap-2 h-13 sm:h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold rounded-3xl border border-[#FF7A00]/30 text-[#FF7A00] hover:bg-[#FF7A00]/[0.06] hover:border-[#FF7A00]/50 transition-all duration-300 active:scale-95 w-full sm:w-auto"
               >
                 <Calendar size={16} />
-                Schedule on Calendly
+                Pick a Time on Calendly
               </a>
               <a
                 href="mailto:dananjayaherath077@gmail.com"
                 className="inline-flex items-center gap-2 h-13 sm:h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold rounded-3xl border border-card-border text-fg-muted hover:text-fg hover:border-card-border hover:bg-card-bg-hover transition-all duration-300 active:scale-95 w-full sm:w-auto"
               >
                 <Mail size={16} />
-                Send an Email
+                Prefer Email? Write to Me
               </a>
             </div>
           </div>

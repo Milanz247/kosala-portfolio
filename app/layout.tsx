@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Syne } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import PageLoader from "@/components/PageLoader";
@@ -9,6 +9,13 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-syne",
+  weight: ["700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -57,7 +64,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased bg-bg text-fg`}>
+      <body className={`${inter.variable} ${syne.variable} font-sans antialiased bg-bg text-fg`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <PageLoader />
           {children}
