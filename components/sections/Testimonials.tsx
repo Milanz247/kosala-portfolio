@@ -12,6 +12,8 @@ const testimonials = [
     role: "Wellness Brand",
     location: "UAE 🇦🇪",
     result: "40+ WhatsApp conversations · AED 8–10 avg. CPR",
+    initials: "LW",
+    color: "#FF7A00",
   },
   {
     quote:
@@ -20,14 +22,18 @@ const testimonials = [
     role: "Skincare Clinic",
     location: "Sri Lanka 🇱🇰",
     result: "Consistent inbound inquiries · Organic reach growth",
+    initials: "CS",
+    color: "#10b981",
   },
   {
     quote:
       "What I appreciated most was the transparency. I could see exactly where the budget was going and what was working. Other agencies just sent me a PDF at the end of the month. Kosala actually explained the numbers and adjusted the strategy based on what we saw.",
-    name: "Local Service Business",
-    role: "Service Brand",
-    location: "UAE 🇦🇪",
+    name: "Amani Home Services",
+    role: "Home Maintenance Brand",
+    location: "Dubai, UAE 🇦🇪",
     result: "Lower CPR through weekly optimization",
+    initials: "AH",
+    color: "#6366f1",
   },
 ];
 
@@ -92,11 +98,20 @@ export default function Testimonials() {
               </div>
 
               {/* Divider */}
-              <div className="border-t border-card-border pt-4">
-                <p className="font-bold text-fg text-sm">{t.name}</p>
-                <p className="text-fg-subtle text-xs mt-0.5">
-                  {t.role} · {t.location}
-                </p>
+              <div className="border-t border-card-border pt-4 flex items-center gap-3">
+                {/* Avatar */}
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-black shadow-lg"
+                  style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}99)` }}
+                >
+                  {t.initials}
+                </div>
+                <div>
+                  <p className="font-bold text-fg text-sm leading-tight">{t.name}</p>
+                  <p className="text-fg-subtle text-xs mt-0.5">
+                    {t.role} · {t.location}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}

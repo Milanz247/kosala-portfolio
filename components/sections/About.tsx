@@ -87,7 +87,7 @@ export default function About() {
               </div>
 
               {/* Social Links */}
-              <div className="flex justify-center md:justify-start gap-3">
+              <div className="flex justify-center md:justify-start gap-3 mb-6">
                 <a
                   href="https://www.linkedin.com/in/kosala-dananjaya-9aa326285/"
                   target="_blank"
@@ -106,6 +106,24 @@ export default function About() {
                   <Instagram size={14} />
                   Instagram
                 </a>
+              </div>
+
+              {/* Credentials row */}
+              <div className="flex flex-wrap justify-center md:justify-start gap-2">
+                {[
+                  { label: "🏆 Meta Blueprint Learner", note: "Meta Certified" },
+                  { label: "📊 50+ Client Campaigns", note: "Active results" },
+                  { label: "🇺🇦 Based in UAE", note: "Al Ain, UAE" },
+                  { label: "🇱🇰 Sri Lanka Roots", note: "Dual market expertise" },
+                ].map((c) => (
+                  <span
+                    key={c.label}
+                    title={c.note}
+                    className="text-[11px] text-fg-subtle border border-card-border bg-icon-bg px-3 py-1.5 rounded-full font-medium hover:border-[#FF7A00]/30 hover:text-fg transition-all duration-200 cursor-default"
+                  >
+                    {c.label}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

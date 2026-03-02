@@ -7,7 +7,7 @@ export default function MinimalLoader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 2000);
+    const timer = setTimeout(() => setVisible(false), 700);
     return () => clearTimeout(timer);
   }, []);
 

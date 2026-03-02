@@ -20,11 +20,11 @@ export default function Home() {
       <main>
         <Hero />
         <PainPoints />
+        <About />
         <Services />
         <Process />
         <CaseStudies />
         <Testimonials />
-        <About />
         <Skills />
         <Experience />
         <FAQ />

@@ -61,7 +61,7 @@ export default function Hero() {
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-[#FF7A00] border border-[#FF7A00]/25 bg-[#FF7A00]/[0.06] px-3 py-1.5 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00] animate-pulse" />
                 <MapPin size={10} />
-                Al Ain, UAE
+                UAE &amp; Sri Lanka
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-emerald-400 border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1.5 rounded-full">
                 <Globe size={10} />
@@ -113,7 +113,7 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div {...fadeUp(0.35)} className="flex flex-col sm:flex-row gap-3">
               <a
-                href="https://wa.me/971545030693?text=Hi Kosala, I'd like to discuss a project."
+                href="https://wa.me/971545030693?text=Hi%20Kosala%2C%20I%27d%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 h-12 sm:h-13 px-6 sm:px-8 text-sm font-bold rounded-2xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-xl shadow-[#FF7A00]/30 hover:shadow-[#FF7A00]/50 transition-all duration-300 active:scale-95 w-full sm:w-auto"
@@ -183,9 +183,16 @@ export default function Hero() {
                   <p className="text-sm font-extrabold text-white tracking-tight leading-none">Kosala Dananjaya</p>
                   <p className="text-[10px] text-[#FFB366] font-semibold mt-0.5">Meta Ads Strategist</p>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-amber-300 font-bold">
+                <a
+                  href="https://www.linkedin.com/in/kosala-dananjaya-9aa326285/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="View LinkedIn profile & recommendations"
+                  className="flex items-center gap-1 text-[10px] text-amber-300 font-bold hover:text-amber-200 transition-colors"
+                >
                   <span className="text-amber-300">★</span> 5.0
-                </div>
+                  <span className="text-[8px] text-amber-300/60 font-normal ml-0.5">LinkedIn</span>
+                </a>
               </div>
 
             </div>

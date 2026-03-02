@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, MapPin, Phone, Sparkles } from "lucide-react";
+import { Mail, MapPin, Phone, Calendar } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -48,14 +48,23 @@ export default function Contact() {
 
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
               <a
-                href="https://wa.me/971545030693?text=Hi Kosala, I'd like to book a free 15-min audit."
+                href="https://wa.me/971545030693?text=Hi%20Kosala%2C%20I%27d%20like%20to%20book%20a%20free%2015-min%20audit."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 h-13 sm:h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold rounded-3xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-xl shadow-[#FF7A00]/25 hover:shadow-[#FF7A00]/40 transition-all duration-300 active:scale-95 w-full sm:w-auto"
               >
                 <Phone size={16} />
                 Book a Free 15-Min Audit
-                {/* <Sparkles size={14} className="opacity-60 group-hover:opacity-100 transition-opacity" /> */}
+              </a>
+              {/* ── Replace the href below with your real Calendly booking URL ── */}
+              <a
+                href="https://calendly.com/kosala-dananjaya/free-audit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 h-13 sm:h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold rounded-3xl border border-[#FF7A00]/30 text-[#FF7A00] hover:bg-[#FF7A00]/[0.06] hover:border-[#FF7A00]/50 transition-all duration-300 active:scale-95 w-full sm:w-auto"
+              >
+                <Calendar size={16} />
+                Schedule on Calendly
               </a>
               <a
                 href="mailto:dananjayaherath077@gmail.com"

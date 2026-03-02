@@ -71,7 +71,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3 flex-shrink-0">
           <ThemeToggle />
           <a
-            href="https://wa.me/971545030693?text=Hi Kosala, I'd like to book a free audit."
+            href="https://wa.me/971545030693?text=Hi%20Kosala%2C%20I%27d%20like%20to%20book%20a%20free%20audit."
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-2 h-10 px-5 text-sm font-semibold rounded-full bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 hover:shadow-[#FF7A00]/40 transition-all duration-300 active:scale-95"
@@ -117,7 +117,7 @@ export default function Navbar() {
               ))}
               <div className="pt-2 pb-1">
                 <a
-                  href="https://wa.me/971545030693?text=Hi Kosala, I'd like to book a free audit."
+                  href="https://wa.me/971545030693?text=Hi%20Kosala%2C%20I%27d%20like%20to%20book%20a%20free%20audit."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full h-12 text-sm font-semibold rounded-xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 transition-all active:scale-95"

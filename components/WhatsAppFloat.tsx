@@ -24,7 +24,7 @@ export default function WhatsAppFloat() {
       <div className="relative">
         <span className="ping-green absolute -top-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500" />
         <a
-          href="https://wa.me/971545030693?text=Hi Kosala, I'd like to discuss a project."
+          href="https://wa.me/971545030693?text=Hi%20Kosala%2C%20I%27d%20like%20to%20discuss%20a%20project."
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setTooltip(true)}

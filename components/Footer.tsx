@@ -37,7 +37,7 @@ const InstagramIcon = () => (
 );
 
 const socialLinks = [
-  { Icon: WhatsAppIcon, href: "https://wa.me/971545030693?text=Hi Kosala, I'd like to discuss a project.", label: "WhatsApp", brandColor: "#25D366" },
+  { Icon: WhatsAppIcon, href: "https://wa.me/971545030693?text=Hi%20Kosala%2C%20I%27d%20like%20to%20discuss%20a%20project.", label: "WhatsApp", brandColor: "#25D366" },
   { Icon: MailIcon, href: "mailto:dananjayaherath077@gmail.com", label: "Email", brandColor: "#EA4335" },
   { Icon: LinkedInIcon, href: "https://www.linkedin.com/in/kosala-dananjaya-9aa326285/", label: "LinkedIn", brandColor: "#0A66C2" },
   { Icon: InstagramIcon, href: "https://www.instagram.com/kosala.social?igsh=MWQ5aXZpcnRlenJ1Zw%3D%3D&utm_source=qr", label: "Instagram", brandColor: "#E1306C" },
@@ -185,6 +185,8 @@ export default function Footer() {
         <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[11px] text-fg-subtle text-center sm:text-left order-2 sm:order-1">
             © {new Date().getFullYear()} Kosala Dananjaya. All rights reserved.
+            {" · "}
+            <a href="/privacy-policy" className="hover:text-[#FF7A00] transition-colors underline underline-offset-2">Privacy Policy</a>
           </p>
 
           {/* Developer credit — professional badge */}

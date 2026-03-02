@@ -123,7 +123,7 @@ export default function FAQ() {
             Still have a question? Just ask directly.
           </p>
           <a
-            href="https://wa.me/971545030693?text=Hi Kosala, I have a question about your services."
+            href="https://wa.me/971545030693?text=Hi%20Kosala%2C%20I%20have%20a%20question%20about%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 h-10 px-6 text-sm font-semibold rounded-full bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 transition-all duration-300 active:scale-95"
