@@ -122,14 +122,6 @@ export default function Services() {
                   {service.description}
                 </p>
 
-                <div className={`text-xs font-semibold italic mb-6 px-3 py-2 rounded-xl border ${
-                  service.featured
-                    ? "text-[#FF7A00] bg-[#FF7A00]/[0.06] border-[#FF7A00]/15"
-                    : "text-fg-muted bg-icon-bg border-card-border"
-                }`}>
-                  💬 &ldquo;{service.outcome}&rdquo;
-                </div>
-
                 <ul className="space-y-3 mt-auto">
                   {service.features.map((feat) => (
                     <li key={feat} className="flex items-start gap-2.5">

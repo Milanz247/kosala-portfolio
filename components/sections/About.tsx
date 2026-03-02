@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { Linkedin, Instagram } from "lucide-react";
+
 
 export default function About() {
   const ref = useRef(null);
@@ -74,57 +74,7 @@ export default function About() {
                 through clear monthly reporting.
               </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-6">
-                {["Meta Ads", "Social Media", "Content Strategy", "Al Ain, UAE", "Sri Lanka"].map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs text-[#FF7A00] border border-[#FF7A00]/15 bg-[#FF7A00]/[0.06] px-3 py-1.5 rounded-full font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
 
-              {/* Social Links */}
-              <div className="flex justify-center md:justify-start gap-3 mb-6">
-                <a
-                  href="https://www.linkedin.com/in/kosala-dananjaya-9aa326285/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 h-9 px-4 text-xs font-semibold rounded-full border border-card-border text-fg-muted hover:text-[#0A66C2] hover:border-[#0A66C2]/40 hover:bg-[#0A66C2]/[0.06] transition-all duration-300"
-                >
-                  <Linkedin size={14} />
-                  LinkedIn
-                </a>
-                <a
-                  href="https://www.instagram.com/kosala.social?igsh=MWQ5aXZpcnRlenJ1Zw%3D%3D&utm_source=qr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 h-9 px-4 text-xs font-semibold rounded-full border border-card-border text-fg-muted hover:text-[#E1306C] hover:border-[#E1306C]/40 hover:bg-[#E1306C]/[0.06] transition-all duration-300"
-                >
-                  <Instagram size={14} />
-                  Instagram
-                </a>
-              </div>
-
-              {/* Credentials row */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                {[
-                  { label: "🏆 Meta Blueprint Learner", note: "Meta Certified" },
-                  { label: "📊 50+ Client Campaigns", note: "Active results" },
-                  { label: "🇺🇦 Based in UAE", note: "Al Ain, UAE" },
-                  { label: "🇱🇰 Sri Lanka Roots", note: "Dual market expertise" },
-                ].map((c) => (
-                  <span
-                    key={c.label}
-                    title={c.note}
-                    className="text-[11px] text-fg-subtle border border-card-border bg-icon-bg px-3 py-1.5 rounded-full font-medium hover:border-[#FF7A00]/30 hover:text-fg transition-all duration-200 cursor-default"
-                  >
-                    {c.label}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         </motion.div>
