@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { Camera, Linkedin, Instagram } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 
 export default function About() {
   const ref = useRef(null);
@@ -26,20 +27,14 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex-shrink-0"
             >
-              <div className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-[#FF7A00]/20 border-3 border-[#FF7A00]/20">
-                {/* TODO: Add your photo - uncomment Image and remove placeholder */}
-                {/* <Image 
-                  src="/your-photo.jpg" 
+              <div className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-[#FF7A00]/20 border-2 border-[#FF7A00]/20">
+                <Image
+                  src="/photo.jpg"
                   alt="Kosala Dananjaya"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
-                /> */}
-                {/* Placeholder - Remove once you add your photo */}
-                <div className="w-full h-full bg-gradient-to-br from-[#FF7A00] to-[#CC5500] flex flex-col items-center justify-center gap-3">
-                  <Camera size={48} className="text-white/80" />
-                  <span className="text-white/60 text-xs font-medium">Add Photo</span>
-                </div>
+                />
               </div>
             </motion.div>
 
@@ -58,22 +53,25 @@ export default function About() {
               </p>
               
               <p className="text-fg-muted text-sm sm:text-base leading-relaxed mb-4">
-                I specialize in combining content strategy with performance marketing
-                to help service-based businesses generate measurable growth through
-                Meta advertising and structured social media systems.
+                I got into Meta Ads because I watched small business owners burn money
+                boosting posts with zero results — and I knew there was a better way.
+                Since then I&apos;ve helped wellness brands, dental clinics, and skincare
+                businesses across UAE and Sri Lanka get consistent, qualified WhatsApp
+                inquiries through structured Meta advertising.
               </p>
 
               <p className="text-fg-subtle text-sm sm:text-base leading-relaxed mb-4">
-                With experience across{" "}
-                <span className="text-fg font-medium">wellness, dental, skincare, and local service brands</span>{" "}
-                in the UAE and Sri Lanka, I focus on building campaigns that don't just
-                increase visibility — but drive qualified inquiries and real customer action.
+                I&apos;m not an agency. You talk directly to me, and I do the work.
+                Every campaign I run is built around{" "}
+                <span className="text-fg font-medium">your specific niche, your budget, and your goals</span>{" "}
+                — not a copy-paste template.
               </p>
 
               <p className="text-fg-subtle text-sm sm:text-base leading-relaxed mb-6">
-                My approach is centered around strategic testing,{" "}
-                <span className="text-fg font-medium">cost-per-lead optimization</span>, and clear
-                performance reporting to ensure every campaign is aligned with business goals.
+                My focus is simple:{" "}
+                <span className="text-fg font-medium">lower cost per lead, more qualified inquiries,
+                and campaigns you can actually understand</span>{" "}
+                through clear monthly reporting.
               </p>
 
               {/* Tags */}

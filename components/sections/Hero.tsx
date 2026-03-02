@@ -67,6 +67,10 @@ export default function Hero() {
                 <Globe size={10} />
                 Available Worldwide
               </span>
+              <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-sky-400 border border-sky-400/20 bg-sky-400/[0.06] px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+                Taking New Clients
+              </span>
             </motion.div>
 
             {/* Name + role */}
@@ -90,10 +94,10 @@ export default function Hero() {
 
             {/* Description */}
             <motion.p {...fadeUp(0.22)} className="text-sm sm:text-base text-fg-subtle leading-relaxed mb-8 max-w-lg">
-              I help clinics, local businesses, and service brands in{" "}
-              <span className="text-fg font-medium">UAE & Sri Lanka</span> grow their
-              online presence and generate real customer inquiries — through
-              strategic Meta advertising and data-driven social media.
+              I help clinics and service brands in{" "}
+              <span className="text-fg font-medium">UAE &amp; Sri Lanka</span> get consistent
+              WhatsApp booking inquiries through Meta Ads — without wasting budget
+              on boosts that go nowhere.
             </motion.p>
 
             {/* Service tags */}

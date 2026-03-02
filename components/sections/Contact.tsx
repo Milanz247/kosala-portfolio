@@ -35,15 +35,15 @@ export default function Contact() {
             </span>
 
             <h2 className="heading text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-fg mb-3 sm:mb-6">
-              Ready to Stop Guessing{" "}
+              Let&apos;s Talk for 15 Minutes.{" "}
               <br className="hidden sm:block" />
-              and <span className="gradient-text">Start Growing?</span>
+              <span className="gradient-text">No Pitch. No Pressure.</span>
             </h2>
 
             <p className="text-fg-subtle text-sm sm:text-base max-w-lg mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
-              Whether you need Meta ads, social media management, or a full
-              content strategy — let&apos;s talk about what your business
-              actually needs.
+              Tell me about your business and what you&apos;re struggling with.
+              Whether it&apos;s Meta ads, social media, or just figuring out where
+              to start — I&apos;ll give you honest advice, for free.
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
@@ -75,8 +75,8 @@ export default function Contact() {
           transition={{ delay: 0.4 }}
           className="flex items-center justify-center gap-2 mt-10 text-fg-subtle text-sm"
         >
-          {/* <MapPin size={14} /> */}
-          {/* <span>Based in Al Ain, UAE · Serving clients in UAE & Sri Lanka</span> */}
+          <MapPin size={14} />
+          <span>Based in Al Ain, UAE · Serving clients in UAE &amp; Sri Lanka</span>
         </motion.div>
       </div>
     </section>

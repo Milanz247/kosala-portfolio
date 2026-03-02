@@ -14,7 +14,8 @@ const services = [
     icon: Megaphone,
     title: "Meta Ads (Lead Generation)",
     description:
-      "Data-driven paid advertising campaigns engineered to generate qualified inquiries and paying customers, not vanity metrics.",
+      "Data-driven paid advertising campaigns built to generate qualified WhatsApp inquiries and paying customers — not vanity metrics.",
+    outcome: "You wake up to WhatsApp messages, not silence.",
     features: [
       "Campaign setup, A/B testing & optimization",
       "Local audience targeting (UAE & Sri Lanka)",
@@ -28,6 +29,7 @@ const services = [
     title: "Social Media Management",
     description:
       "End-to-end management of your social presence with a consistent, on-brand strategy that drives real engagement.",
+    outcome: "Your brand looks active and professional — even when you're busy with clients.",
     features: [
       "Content planning & monthly calendar",
       "Reel strategy and execution",
@@ -41,6 +43,7 @@ const services = [
     title: "ROI Reporting & Strategy",
     description:
       "Crystal-clear reporting so you know exactly what every dirham is doing. No fluff, just numbers that matter.",
+    outcome: "You'll always know which AED is working and which to cut.",
     features: [
       "Monthly performance dashboards",
       "ROAS & CPR tracking",
@@ -115,9 +118,17 @@ export default function Services() {
                 <h3 className="text-xl font-bold text-fg mb-2 tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-sm text-fg-subtle leading-relaxed mb-6">
+                <p className="text-sm text-fg-subtle leading-relaxed mb-4">
                   {service.description}
                 </p>
+
+                <div className={`text-xs font-semibold italic mb-6 px-3 py-2 rounded-xl border ${
+                  service.featured
+                    ? "text-[#FF7A00] bg-[#FF7A00]/[0.06] border-[#FF7A00]/15"
+                    : "text-fg-muted bg-icon-bg border-card-border"
+                }`}>
+                  💬 &ldquo;{service.outcome}&rdquo;
+                </div>
 
                 <ul className="space-y-3 mt-auto">
                   {service.features.map((feat) => (
