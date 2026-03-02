@@ -56,7 +56,7 @@ export default function About() {
                 I got into Meta Ads because I watched small business owners burn money
                 boosting posts with zero results — and I knew there was a better way.
                 Since then I&apos;ve helped wellness brands, dental clinics, and skincare
-                businesses across UAE and Sri Lanka get consistent, qualified WhatsApp
+                businesses worldwide get consistent, qualified WhatsApp
                 inquiries through structured Meta advertising.
               </p>
 

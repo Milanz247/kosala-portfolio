@@ -8,7 +8,7 @@ const experience = [
   {
     title: "Freelance Meta Ads Strategist",
     period: "2024 – Present",
-    sector: "Service-Based Businesses · UAE & Sri Lanka",
+    sector: "Service-Based Businesses · Available Worldwide",
     points: [
       "Managing social media accounts and Meta ad campaigns for clinics and local brands",
       "Building content strategies and Reels concepts aligned with business ROI goals",

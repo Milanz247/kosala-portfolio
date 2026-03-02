@@ -75,7 +75,7 @@ export default function Contact() {
           className="flex items-center justify-center gap-2 mt-10 text-fg-subtle text-sm"
         >
           <MapPin size={14} />
-          <span>Based in Al Ain, UAE · Serving clients in UAE &amp; Sri Lanka</span>
+          <span>Available Worldwide</span>
         </motion.div>
       </div>
     </section>

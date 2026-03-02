@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowDown, Phone, MapPin, CheckCircle2, Globe, ChevronRight } from "lucide-react";
+import { ArrowDown, Phone, CheckCircle2, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const fadeUp = (delay: number) => ({
@@ -56,23 +56,6 @@ export default function Hero() {
 
           {/* ── Left ── */}
           <div>
-            {/* Location + availability */}
-            <motion.div {...fadeUp(0)} className="flex flex-wrap items-center gap-2 mb-6">
-              <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-[#FF7A00] border border-[#FF7A00]/25 bg-[#FF7A00]/[0.06] px-3 py-1.5 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00] animate-pulse" />
-                <MapPin size={10} />
-                UAE &amp; Sri Lanka
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-emerald-400 border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1.5 rounded-full">
-                <Globe size={10} />
-                Available Worldwide
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-sky-400 border border-sky-400/20 bg-sky-400/[0.06] px-3 py-1.5 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-                Taking New Clients
-              </span>
-            </motion.div>
-
             {/* Name + role */}
             <motion.div {...fadeUp(0.08)} className="mb-4 sm:mb-5">
               <p className="text-sm sm:text-base font-semibold text-fg-muted mb-1">
@@ -94,8 +77,8 @@ export default function Hero() {
 
             {/* Description */}
             <motion.p {...fadeUp(0.22)} className="text-sm sm:text-base text-fg-subtle leading-relaxed mb-8 max-w-lg">
-              I help clinics and service brands in{" "}
-              <span className="text-fg font-medium">UAE &amp; Sri Lanka</span> get consistent
+              I help clinics and service brands{" "}
+              <span className="text-fg font-medium">worldwide</span> get consistent
               WhatsApp booking inquiries through Meta Ads — without wasting budget
               on boosts that go nowhere.
             </motion.p>

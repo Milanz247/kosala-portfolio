@@ -18,7 +18,7 @@ const services = [
     outcome: "You wake up to WhatsApp messages, not silence.",
     features: [
       "Campaign setup, A/B testing & optimization",
-      "Local audience targeting (UAE & Sri Lanka)",
+      "Audience targeting (Available Worldwide)",
       "WhatsApp & inquiry-focused funnels",
       "Ad creative strategy & copywriting",
     ],

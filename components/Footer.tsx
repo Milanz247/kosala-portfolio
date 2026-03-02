@@ -69,7 +69,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-xs text-fg-subtle leading-relaxed mb-5">
-            Helping businesses in UAE &amp; Sri Lanka grow through Meta Ads &amp; content marketing.
+            Helping businesses worldwide grow through Meta Ads &amp; content marketing.
           </p>
 
           {/* Social icons row */}
@@ -119,7 +119,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-fg-subtle leading-relaxed mb-6 max-w-sm">
-              Helping service-based businesses in UAE &amp; Sri Lanka generate loyal customers
+              Helping service-based businesses worldwide generate loyal customers
               through data-driven Meta advertising and structured content marketing.
             </p>
             <div className="flex flex-col gap-2">
