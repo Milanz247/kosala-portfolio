@@ -63,7 +63,7 @@ export default function About() {
               <p className="text-fg-subtle text-sm sm:text-base leading-relaxed mb-4">
                 I&apos;m not an agency. You talk directly to me, and I do the work.
                 Every campaign I run is built around{" "}
-                <span className="text-fg font-medium">your specific niche, your budget, and your goals</span>{" "}
+                <span className="text-fg font-medium">Your specific niche,budget and goals</span>{" "}
                 — not a copy-paste template.
               </p>
 

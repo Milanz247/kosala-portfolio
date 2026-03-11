@@ -169,6 +169,70 @@ const layanWellnessCaseStudy = {
   ],
 };
 
+/* ─── Braces & Specialist Dental Clinic Data ─────────── */
+const bracesDentalCaseStudy = {
+  id: "braces-dental",
+  number: "03",
+  client: "Braces & Specialist Dental Clinic",
+  tag: "Dental Clinic",
+  type: "Social Media Management & Content Strategy",
+  status: "live",
+  overview:
+    "Braces & Specialist Dental Clinic, located in Kottawa, Sri Lanka, is a specialist dental practice offering orthodontic treatments, braces, and a range of dental care services. The clinic required a strong social media presence and a consistent content strategy to attract new patients and build trust in the local community.",
+  objectives: [
+    "Establish a professional and engaging social media presence",
+    "Create educational content to build trust with potential patients",
+    "Position the clinic as the go-to specialist dental provider in Kottawa",
+    "Drive patient inquiries through organic and targeted content",
+    "Build a consistent brand identity across social media platforms",
+  ],
+  challenge:
+    "The clinic had limited digital visibility and required a content strategy built from scratch. The challenge was to create medically credible yet approachable content that would resonate with a local audience while consistently highlighting specialist services like orthodontics and braces.",
+  strategy: [
+    {
+      title: "Content Strategy",
+      description:
+        "Developed a structured monthly content plan including educational posts about treatments, patient FAQs, clinic culture content, and before-and-after showcases to build authority and trust.",
+    },
+    {
+      title: "Brand Positioning",
+      description:
+        "Crafted a consistent visual style and brand voice that conveyed professionalism and approachability — targeting families, young adults, and parents seeking orthodontic treatment for their children.",
+    },
+    {
+      title: "Audience Targeting",
+      description:
+        "Focused on local audiences in Kottawa and surrounding areas, tailoring content to address common dental concerns and treatment questions relevant to the target demographic.",
+    },
+    {
+      title: "Engagement & Growth",
+      description:
+        "Implemented engagement-driven content formats including polls, tips, and Reels to grow organic reach and encourage profile visits and direct inquiries.",
+    },
+  ],
+  execution: [
+    "Developed a full social media content calendar with 16–20 posts per month",
+    "Designed branded visual templates for consistent identity across posts",
+    "Created educational carousel posts and Reels explaining treatments",
+    "Managed community engagement and responded to comments and DMs",
+    "Produced before-and-after content showcasing orthodontic results",
+    "Regularly reviewed content performance and adjusted the strategy",
+  ],
+  results: [
+    { metric: "Content Strategy", value: "Fully developed", note: "monthly content plan in place" },
+    { metric: "Brand Identity", value: "Consistent", note: "visual identity established" },
+    { metric: "Audience Targeting", value: "Defined", note: "local audience segments identified" },
+    { metric: "Engagement", value: "Growing", note: "organic engagement improving" },
+  ],
+  tools: ["Meta Business Suite", "Canva", "CapCut", "Instagram", "Facebook"],
+  images: [
+    "/case_study/braces_and_specialist_clinic_kottawa/1.jpeg",
+    "/case_study/braces_and_specialist_clinic_kottawa/2.jpeg",
+    "/case_study/braces_and_specialist_clinic_kottawa/3.jpeg",
+    "/case_study/braces_and_specialist_clinic_kottawa/4.jpeg",
+  ],
+};
+
 const caseStudies = [
   {
     id: "clear-skin-panadura",
@@ -199,9 +263,9 @@ const caseStudies = [
     tag: "Dental Clinic",
     type: "Social Media Management & Content Strategy",
     summary:
-      "Content strategy and social media management tailored for a specialist dental clinic — positioning, educational content, and organic growth focus.",
-    results: ["Content strategy developed", "Audience targeting defined", "Coming soon"],
-    status: "coming-soon",
+      "Content strategy and social media management tailored for a specialist dental clinic in Kottawa — positioning, educational content, and organic growth focus.",
+    results: ["Content strategy developed", "Audience targeting defined", "Brand identity established"],
+    status: "live",
   },
 ];
 
@@ -441,6 +505,223 @@ function LayanWellnessModal({ onClose }: { onClose: () => void }) {
             </AnimatePresence>
 
             {/* Tools */}
+            <div>
+              <SectionLabel icon={Wrench} label="Tools Used" />
+              <div className="flex flex-wrap gap-2">
+                {cs.tools.map((tool) => (
+                  <span key={tool} className="text-sm bg-icon-bg text-fg-muted border border-card-border px-3 py-1.5 rounded-xl font-medium">{tool}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="border-t border-card-border p-4 sm:p-6 flex flex-wrap justify-between items-center gap-3">
+            <p className="text-xs text-fg-subtle flex-1 min-w-0">Details summarized for confidentiality.</p>
+            <button onClick={onClose} className="inline-flex items-center gap-2 h-9 px-5 text-xs font-semibold rounded-full border border-card-border text-fg-muted hover:text-fg hover:border-card-border transition-all">
+              Close
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─── Braces & Specialist Dental Clinic Modal ───────────── */
+function BracesDentalModal({ onClose }: { onClose: () => void }) {
+  const cs = bracesDentalCaseStudy;
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const openLightbox = (i: number) => setLightbox(i);
+  const closeLightbox = () => setLightbox(null);
+  const prevImage = () => setLightbox((p) => (p !== null ? (p - 1 + cs.images.length) % cs.images.length : 0));
+  const nextImage = () => setLightbox((p) => (p !== null ? (p + 1) % cs.images.length : 0));
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 overflow-y-auto"
+    >
+      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative min-h-screen flex items-start justify-center p-3 sm:p-4 pt-4 sm:pt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 30 }}
+          transition={{ duration: 0.3 }}
+          className="relative w-full max-w-4xl bg-modal-bg rounded-2xl sm:rounded-3xl shadow-2xl shadow-black/50 border border-card-border overflow-hidden"
+        >
+          {/* Header */}
+          <div className="relative bg-gradient-to-br from-[#FF7A00] to-[#CC5500] p-5 sm:p-8 text-white overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+            <div className="relative flex items-start justify-between gap-3">
+              <div>
+                <div className="text-white/70 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2">Case Study {cs.number}</div>
+                <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight mb-1">{cs.client}</h2>
+                <p className="text-white/70 text-xs sm:text-sm">{cs.type}</p>
+              </div>
+              <button onClick={onClose} className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
+                <X size={16} className="sm:w-[18px] sm:h-[18px]" />
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
+              {cs.tools.map((t) => (
+                <span key={t} className="text-[10px] sm:text-xs bg-white/20 border border-white/30 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-medium">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Body */}
+          <div className="p-5 sm:p-8 space-y-6 sm:space-y-10">
+            <div>
+              <SectionLabel icon={Lightbulb} label="Overview" />
+              <p className="text-fg-muted leading-relaxed text-xs sm:text-base">{cs.overview}</p>
+            </div>
+
+            <div>
+              <SectionLabel icon={Target} label="Objectives" />
+              <ul className="space-y-2">
+                {cs.objectives.map((obj, i) => (
+                  <li key={i} className="flex items-start gap-2 sm:gap-3">
+                    <span className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] text-[10px] sm:text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                    <span className="text-fg-muted text-xs sm:text-sm leading-relaxed">{obj}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <SectionLabel icon={Settings2} label="Challenge" />
+              <div className="bg-[#FF7A00]/[0.04] border border-[#FF7A00]/10 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+                <p className="text-fg-muted text-xs sm:text-sm leading-relaxed">{cs.challenge}</p>
+              </div>
+            </div>
+
+            <div>
+              <SectionLabel icon={Lightbulb} label="Strategy" />
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                {cs.strategy.map((s) => (
+                  <div key={s.title} className="bg-card-bg rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-card-border">
+                    <h4 className="font-bold text-fg text-xs sm:text-sm mb-1.5 sm:mb-2">{s.title}</h4>
+                    <p className="text-fg-subtle text-[11px] sm:text-xs leading-relaxed">{s.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <SectionLabel icon={Settings2} label="Execution" />
+              <ul className="space-y-2 sm:space-y-2.5">
+                {cs.execution.map((step, i) => (
+                  <li key={i} className="flex items-start gap-2 sm:gap-3">
+                    <ChevronRight size={14} className="text-[#FF7A00] mt-0.5 flex-shrink-0 sm:w-4 sm:h-4" />
+                    <span className="text-fg-muted text-xs sm:text-sm">{step}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <SectionLabel icon={BarChart3} label="Results" />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                {cs.results.map((r) => (
+                  <div key={r.metric} className="bg-[#FF7A00]/[0.04] border border-[#FF7A00]/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center">
+                    <div className="text-[#FF7A00] font-extrabold text-xs sm:text-sm mb-0.5 sm:mb-1">{r.value}</div>
+                    <div className="text-fg-subtle text-[10px] sm:text-xs">{r.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <SectionLabel icon={Settings2} label="Work Samples" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                {cs.images.map((src, i) => (
+                  <button
+                    key={src}
+                    onClick={() => openLightbox(i)}
+                    className="group relative rounded-xl sm:rounded-2xl overflow-hidden border border-card-border bg-card-bg aspect-video cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-[#FF7A00]/50"
+                  >
+                    <Image
+                      src={src}
+                      alt={`Braces Dental work sample ${i + 1}`}
+                      fill
+                      className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <ZoomIn size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Lightbox */}
+            <AnimatePresence>
+              {lightbox !== null && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+                  onClick={closeLightbox}
+                >
+                  <div className="absolute inset-0 bg-black/90 backdrop-blur-md" />
+                  <button
+                    onClick={closeLightbox}
+                    className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <X size={18} className="text-white" />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                    className="absolute left-3 sm:left-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <ChevronLeft size={20} className="text-white" />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                    className="absolute right-3 sm:right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition-colors"
+                  >
+                    <ChevronRight size={20} className="text-white" />
+                  </button>
+                  <motion.div
+                    key={lightbox}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.92 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative z-10 w-full max-w-4xl max-h-[85vh] aspect-video"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src={cs.images[lightbox]}
+                      alt={`Sample ${lightbox + 1}`}
+                      fill
+                      className="object-contain rounded-xl"
+                      sizes="100vw"
+                      priority
+                    />
+                  </motion.div>
+                  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5">
+                    {cs.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => { e.stopPropagation(); setLightbox(idx); }}
+                        className={`w-1.5 h-1.5 rounded-full transition-all ${
+                          idx === lightbox ? "bg-white w-4" : "bg-white/40"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div>
               <SectionLabel icon={Wrench} label="Tools Used" />
               <div className="flex flex-wrap gap-2">
@@ -771,20 +1052,13 @@ export default function CaseStudies() {
                   ))}
                 </div>
 
-                {cs.status === "live" ? (
+                {cs.status === "live" && (
                   <button
                     onClick={() => setOpenModal(cs.id)}
                     className="w-full inline-flex items-center justify-center gap-2 h-10 sm:h-11 text-xs sm:text-sm font-semibold rounded-xl sm:rounded-2xl bg-[#FF7A00] text-white hover:bg-[#FF9230] shadow-lg shadow-[#FF7A00]/20 transition-all duration-300 active:scale-95"
                   >
                     View Full Case Study
                     <ExternalLink size={13} className="sm:w-3.5 sm:h-3.5" />
-                  </button>
-                ) : (
-                  <button
-                    disabled
-                    className="w-full inline-flex items-center justify-center gap-2 h-10 sm:h-11 text-xs sm:text-sm font-semibold rounded-xl sm:rounded-2xl border border-card-border text-fg-subtle cursor-not-allowed"
-                  >
-                    Details Coming Soon
                   </button>
                 )}
               </div>
@@ -796,6 +1070,7 @@ export default function CaseStudies() {
       <AnimatePresence>
         {openModal === "clear-skin-panadura" && <CaseStudyModal onClose={() => setOpenModal(null)} />}
         {openModal === "layan-wellness" && <LayanWellnessModal onClose={() => setOpenModal(null)} />}
+        {openModal === "braces-dental" && <BracesDentalModal onClose={() => setOpenModal(null)} />}
       </AnimatePresence>
     </section>
   );
