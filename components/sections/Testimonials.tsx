@@ -5,35 +5,45 @@ import { motion, useInView } from "framer-motion";
 import { Quote } from "lucide-react";
 
 const testimonials = [
+  // {
+  //   quote:
+  //     "We were boosting posts randomly for months with nothing to show for it. Kosala set up a proper WhatsApp campaign and within two weeks we had real inquiries coming in — people actually booking sessions. The cost per conversation was way lower than we expected.",
+  //   name: "Layan Wellness Team",
+  //   role: "Wellness Brand",
+  //   location: "UAE 🇦🇪",
+  //   result: "40+ WhatsApp conversations · AED 8–10 avg. CPR",
+  //   initials: "LW",
+  //   color: "#FF7A00",
+  // },
+  // {
+  //   quote:
+  //     "Our clinic had almost no social media presence. Kosala built everything from scratch — content plan, ad setup, the whole thing. We started getting consistent WhatsApp inquiries from local customers within the first month. It made a real difference to the business.",
+  //   name: "Clear Skin Panadura",
+  //   role: "Skincare Clinic",
+  //   location: "Sri Lanka 🇱🇰",
+  //   result: "Consistent inbound inquiries · Organic reach growth",
+  //   initials: "CS",
+  //   color: "#10b981",
+  // },
+  // {
+  //   quote:
+  //     "What I appreciated most was the transparency. I could see exactly where the budget was going and what was working. Other agencies just sent me a PDF at the end of the month. Kosala actually explained the numbers and adjusted the strategy based on what we saw.",
+  //   name: "Amani Home Services",
+  //   role: "Home Maintenance Brand",
+  //   location: "Dubai, UAE 🇦🇪",
+  //   result: "Lower CPR through weekly optimization",
+  //   initials: "AH",
+  //   color: "#6366f1",
+  // },
   {
     quote:
-      "We were boosting posts randomly for months with nothing to show for it. Kosala set up a proper WhatsApp campaign and within two weeks we had real inquiries coming in — people actually booking sessions. The cost per conversation was way lower than we expected.",
-    name: "Layan Wellness Team",
-    role: "Wellness Brand",
-    location: "UAE 🇦🇪",
-    result: "40+ WhatsApp conversations · AED 8–10 avg. CPR",
-    initials: "LW",
-    color: "#FF7A00",
-  },
-  {
-    quote:
-      "Our clinic had almost no social media presence. Kosala built everything from scratch — content plan, ad setup, the whole thing. We started getting consistent WhatsApp inquiries from local customers within the first month. It made a real difference to the business.",
-    name: "Clear Skin Panadura",
-    role: "Skincare Clinic",
+      "Kosala has been helping to manage the social media presence of our dental clinic with professionalism and creativity. He understands how to present healthcare services in a clear and engaging way while maintaining a professional approach. I appreciate his dedication and his efforts to improve our clinic’s online visibility.",
+    name: "Dr. Renuka Priyadarshanie",
+    role: "Consultant Orthodontist & Owner, Braces and Specialist Dental Clinic",
     location: "Sri Lanka 🇱🇰",
-    result: "Consistent inbound inquiries · Organic reach growth",
-    initials: "CS",
-    color: "#10b981",
-  },
-  {
-    quote:
-      "What I appreciated most was the transparency. I could see exactly where the budget was going and what was working. Other agencies just sent me a PDF at the end of the month. Kosala actually explained the numbers and adjusted the strategy based on what we saw.",
-    name: "Amani Home Services",
-    role: "Home Maintenance Brand",
-    location: "Dubai, UAE 🇦🇪",
-    result: "Lower CPR through weekly optimization",
-    initials: "AH",
-    color: "#6366f1",
+    result: "Improved online visibility · Professional healthcare marketing",
+    initials: "RP",
+    color: "#e11d48",
   },
 ];
 
@@ -91,11 +101,6 @@ export default function Testimonials() {
               <p className="text-fg-muted text-sm leading-relaxed mb-5 flex-1">
                 &ldquo;{t.quote}&rdquo;
               </p>
-
-              {/* Result badge */}
-              <div className="text-[10px] sm:text-xs font-semibold text-[#FF7A00] bg-[#FF7A00]/[0.06] border border-[#FF7A00]/15 px-3 py-1.5 rounded-full mb-4 w-fit">
-                ✅ {t.result}
-              </div>
 
               {/* Divider */}
               <div className="border-t border-card-border pt-4 flex items-center gap-3">
