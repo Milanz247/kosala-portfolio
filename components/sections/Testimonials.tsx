@@ -35,6 +35,8 @@ const testimonials = [
   //   initials: "AH",
   //   color: "#6366f1",
   // },
+
+  
   {
     quote:
       "Kosala has been helping to manage the social media presence of our dental clinic with professionalism and creativity. He understands how to present healthcare services in a clear and engaging way while maintaining a professional approach. I appreciate his dedication and his efforts to improve our clinic’s online visibility.",
