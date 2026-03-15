@@ -8,6 +8,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Experience from "@/components/sections/Experience";
+import Education from "@/components/sections/Education";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
@@ -27,6 +28,7 @@ export default function Home() {
         <Testimonials />
         <Skills />
         <Experience />
+        <Education />
         <FAQ />
         <Contact />
       </main>

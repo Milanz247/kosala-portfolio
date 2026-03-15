@@ -1,37 +1,204 @@
-# Kosala Dananjaya — Portfolio
+# Kosala Dananjaya — Personal Portfolio
 
-Personal portfolio website for Kosala Dananjaya, Meta Ads Strategist based in Al Ain, UAE.
+> Personal portfolio website for **Kosala Dananjaya**, Meta Ads Strategist & Social Media Manager based in Al Ain, UAE.
 
-## Stack
-- Next.js 15 (App Router)
-- TypeScript
-- Tailwind CSS v4
-- Framer Motion
-- next-themes (dark mode)
+Live site: [https://kosala.vercel.app](https://kosala.vercel.app) _(update with your actual URL)_
 
-## Dev
+---
+
+## 🛠 Technology Stack
+
+| Technology                   | Version | Purpose                                                     |
+| ---------------------------- | ------- | ----------------------------------------------------------- |
+| **Next.js**                  | 16.1.6  | React framework (App Router, SSR, routing)                  |
+| **React**                    | 19.2.3  | UI component library                                        |
+| **TypeScript**               | ^5      | Type-safe JavaScript                                        |
+| **Tailwind CSS**             | ^4      | Utility-first CSS styling                                   |
+| **Framer Motion**            | ^12     | Animations & scroll-triggered transitions                   |
+| **next-themes**              | ^0.4.6  | Dark / Light mode support                                   |
+| **lucide-react**             | ^0.575  | Icon library                                                |
+| **Radix UI**                 | various | Accessible component primitives (accordion, dropdown, tabs) |
+| **shadcn/ui**                | —       | Pre-built UI components built on Radix UI                   |
+| **class-variance-authority** | ^0.7    | Component variant system                                    |
+| **clsx + tailwind-merge**    | latest  | Safe Tailwind class merging utility                         |
+
+---
+
+## ✅ Prerequisites
+
+Make sure the following are installed on your machine before running the project:
+
+- **Node.js** — v18 or higher → [Download Node.js](https://nodejs.org)
+- **npm** — comes bundled with Node.js (or use `pnpm` / `yarn` if preferred)
+
+Check your versions:
+
+```bash
+node -v
+npm -v
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/kosala-portfolio.git
+cd kosala-portfolio
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+This installs all packages listed in `package.json` — including Next.js, React, Tailwind CSS, Framer Motion, and all other dependencies.
+
+### 3. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and go to:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The page **auto-refreshes** every time you save a file — no manual reload needed.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📜 Available Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command         | Description                                               |
+| --------------- | --------------------------------------------------------- |
+| `npm run dev`   | Start local development server at `http://localhost:3000` |
+| `npm run build` | Build the optimised production bundle                     |
+| `npm run start` | Start the production server (run `build` first)           |
+| `npm run lint`  | Run ESLint to check for code errors                       |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📁 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+kosala-portfolio/
+├── app/
+│   ├── globals.css          # Global styles & CSS variables (colors, typography)
+│   ├── layout.tsx           # Root layout — metadata, fonts, ThemeProvider
+│   ├── page.tsx             # Home page — assembles all sections in order
+│   └── privacy-policy/      # Privacy Policy page
+│
+├── components/
+│   ├── Navbar.tsx           # Fixed top navigation bar (scroll-aware, mobile menu)
+│   ├── Footer.tsx           # Page footer
+│   ├── WhatsAppFloat.tsx    # Floating WhatsApp contact button (bottom-right)
+│   ├── PageLoader.tsx       # Initial page load animation
+│   │
+│   ├── sections/            # Individual page sections
+│   │   ├── Hero.tsx         # Landing hero — name, title, CTA buttons
+│   │   ├── About.tsx        # Bio and personal background
+│   │   ├── Services.tsx     # Service offerings
+│   │   ├── CaseStudies.tsx  # Client results & campaign case studies
+│   │   ├── Skills.tsx       # Tools & skills overview
+│   │   ├── Experience.tsx   # Work history / experience timeline
+│   │   ├── Education.tsx    # Education & certifications
+│   │   ├── Testimonials.tsx # Client testimonials
+│   │   ├── Process.tsx      # Working process steps
+│   │   ├── PainPoints.tsx   # Pain points section
+│   │   ├── FAQ.tsx          # Frequently asked questions
+│   │   └── Contact.tsx      # Contact form & details
+│   │
+│   ├── providers/
+│   │   └── ThemeProvider.tsx  # next-themes wrapper for dark/light mode
+│   │
+│   └── ui/                  # Reusable shadcn/ui primitives
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       └── theme-toggle.tsx
+│
+├── lib/
+│   └── utils.ts             # cn() helper for merging Tailwind classes
+│
+├── public/                  # Static assets (images, icons, etc.)
+│
+├── package.json             # Project dependencies & scripts
+├── tsconfig.json            # TypeScript configuration
+├── next.config.ts           # Next.js configuration
+├── postcss.config.mjs       # PostCSS config (Tailwind integration)
+├── eslint.config.mjs        # ESLint flat config
+└── components.json          # shadcn/ui component registry config
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🎨 Design System
+
+The color palette and theme are controlled via CSS custom properties in `app/globals.css`:
+
+| Variable         | Usage                           |
+| ---------------- | ------------------------------- |
+| `--bg`           | Page background                 |
+| `--bg-secondary` | Secondary background (sections) |
+| `--fg`           | Primary text / foreground       |
+| `--fg-subtle`    | Secondary text                  |
+| `--fg-muted`     | Muted / tertiary text           |
+| `--card-bg`      | Card background                 |
+| `--card-border`  | Card border color               |
+| `--icon-bg`      | Icon container background       |
+
+**Accent colour:** `#FF7A00` (orange) — used across all branding highlights.
+
+**Default theme:** Dark mode (`defaultTheme="dark"` with `enableSystem={false}`).
+
+---
+
+## 🌐 Deployment
+
+### Deploy on Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) and import your repository
+3. Vercel auto-detects Next.js — click **Deploy**
+
+No extra configuration needed. Vercel handles the build and deployment automatically.
+
+### Manual Production Build
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## 📦 Key Dependencies Explained
+
+| Package                    | Why it's used                                                              |
+| -------------------------- | -------------------------------------------------------------------------- |
+| `next`                     | The core framework — handles routing, server rendering, image optimisation |
+| `framer-motion`            | Powers all scroll-triggered animations and micro-interactions              |
+| `next-themes`              | Provides dark/light mode switching with zero flicker                       |
+| `lucide-react`             | Clean, consistent SVG icon set                                             |
+| `@radix-ui/*`              | Accessible, unstyled UI primitives (dropdown, accordion, tabs)             |
+| `tailwindcss`              | Utility-first CSS framework                                                |
+| `class-variance-authority` | Manages component variants (e.g. button sizes and styles)                  |
+| `clsx` + `tailwind-merge`  | Safely combines Tailwind class names without conflicts                     |
+
+---
+
+## 👤 Author
+
+**Kosala Dananjaya**
+Meta Ads Strategist & Social Media Manager
+📍 Al Ain, UAE
+
+---
+
+_Last updated: March 2026_

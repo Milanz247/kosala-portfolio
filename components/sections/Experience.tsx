@@ -6,15 +6,24 @@ import { Briefcase, CheckCircle2 } from "lucide-react";
 
 const experience = [
   {
-    title: "Freelance Meta Ads Strategist",
-    period: "2024 – Present",
-    sector: "Service-Based Businesses · Available Worldwide",
+    title: "Freelance Social Media Manager & Digital Marketer (Remote)",
+    period: "Jan 2023 – Present",
+    sector: "UAE & Sri Lanka",
     points: [
-      "Managing social media accounts and Meta ad campaigns for clinics and local brands",
-      "Building content strategies and Reels concepts aligned with business ROI goals",
-      "Running lead generation campaigns focused on WhatsApp inquiries and bookings",
-      "Supporting businesses in improving online presence, reach, and customer acquisition",
-      "Delivering monthly performance reports with actionable optimization insights",
+      "Planned and executed end-to-end social media and paid advertising strategies in line with lead generation and conversion objectives for service-based businesses.",
+      "Introduced, optimised and scaled Meta Ads campaigns including Click-to-WhatsApp, lead generation, and traffic campaigns, upholding strong CTR and cost efficiency.",
+      "Revitalised WhatsApp enquiry funnels, improving message quality, response flow and customer conversion timelines.",
+      "Carried out audience research, testing of creative and optimisation of ad copy to make sure that the cost per lead was reduced and the performance of the campaign was improved.",
+    ],
+  },
+  {
+    title: "Digital Marketing Assistant – Layan Wellness",
+    period: "Jan 2023 – Dec 2024",
+    sector: "Al Ain, UAE",
+    points: [
+      "Led Meta Ads campaigns to generate high-quality WhatsApp enquiries, refining creatives, audience targeting, and call-to-action flows, which led to a sustained high efficiency of lead acquisition and a higher engagement rate.",
+      "Designed lead generation funnels and structured messaging systems, boosting enquiry response rates, accelerating conversion timelines, and providing actionable insights to improve ROI.",
+      "Analysed campaign performance metrics (CTR, CPL, CPC), delivering data-driven recommendations and coordinating with creative teams to guarantee brand-aligned, performance-focused content.",
     ],
   },
 ];
@@ -47,7 +56,7 @@ export default function Experience() {
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto space-y-6">
           {experience.map((exp, idx) => (
             <motion.div
               key={exp.title}
