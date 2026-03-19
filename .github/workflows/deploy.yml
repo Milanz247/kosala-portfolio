@@ -52,6 +52,6 @@ jobs:
             if [ $? -eq 0 ]; then
               pm2 restart kosala-portfolio
             else
-              pm2 start npm --name "kosala-portfolio" -- start -- -p 3005
+              pm2 start npm --name "kosala-portfolio" -- start -- -p 3002
             fi
             pm2 save
